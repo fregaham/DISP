@@ -1,0 +1,4 @@
+AddHandler mod_python .py
+PythonDebug On
+PythonHandler index
+PythonInterpPerDirectory On

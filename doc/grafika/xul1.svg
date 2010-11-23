@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   inkscape:label="Pozadí"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docbase="/home/marcho/public_html/bc/doc/grafika"
+   sodipodi:docname="xul1.svg">
+  <defs
+     id="defs1404">
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutM"
+       style="overflow:visible">
+      <path
+         id="path16662"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.4)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="349.72795"
+     inkscape:cy="231.80633"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="993"
+     inkscape:window-height="667"
+     inkscape:window-x="31"
+     inkscape:window-y="21" />
+  <metadata
+     id="metadata1407">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Vrstva 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       y="644.94116"
+       x="40.651203"
+       height="38.999981"
+       width="248.81747"
+       id="rect7517"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99999917;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+    <rect
+       y="697.79681"
+       x="41.238503"
+       height="38.999996"
+       width="248.78569"
+       id="rect10348"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.00000024;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text10350"
+       y="720.1803"
+       x="124.99741"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       xml:space="preserve"><tspan
+         y="720.1803"
+         x="124.99741"
+         id="tspan10352"
+         sodipodi:role="line">XUL dokument</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text13017"
+       y="667.77515"
+       x="165.28876"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       xml:space="preserve"><tspan
+         y="667.77515"
+         x="165.28876"
+         sodipodi:role="line"
+         id="tspan1353">Prvky NUI</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.50000006;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.00000016, 3.00000045;stroke-dashoffset:5.00000078;stroke-opacity:1;display:inline"
+       id="rect13920"
+       width="288.71481"
+       height="130.5493"
+       x="24.075018"
+       y="618.32257" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       x="267.73987"
+       y="630.69977"
+       id="text2238"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2240"
+         x="267.73987"
+         y="630.69977">Server</tspan></text>
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999982px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       d="M 130.52419,799.80315 L 130.52419,739.97857"
+       id="path2258" />
+    <rect
+       y="802.14789"
+       x="43.464298"
+       height="38.999996"
+       width="248.78569"
+       id="rect1486"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.00000024;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text1488"
+       y="824.53137"
+       x="127.22321"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       xml:space="preserve"><tspan
+         y="824.53137"
+         x="127.22321"
+         id="tspan1490"
+         sodipodi:role="line">XUL dokument</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.50000018;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.00000048, 3.00000138;stroke-dashoffset:5.00000234;stroke-opacity:1;display:inline"
+       id="rect1492"
+       width="288.71481"
+       height="100.66383"
+       x="23.499737"
+       y="763.45923" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text1494"
+       y="776.84277"
+       x="270.59702"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       xml:space="preserve"><tspan
+         y="776.84277"
+         x="270.59702"
+         id="tspan1496"
+         sodipodi:role="line">Klient</tspan></text>
+    <path
+       id="path1498"
+       d="M 204.09511,737.92057 L 204.09511,797.74515"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999982px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline" />
+    <path
+       id="path1500"
+       d="M 130.09561,696.16821 L 130.09561,686.71342"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       d="M 203.59561,684.65542 L 203.59561,694.11021"
+       id="path1502" />
+  </g>
+</svg>

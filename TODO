@@ -1,0 +1,17 @@
+
+applicationbase:
+	pojmenovat eventy podle std. konvence
+	
+ui:
+	width u editboxu
+	viceradkovy text, treba TextArea, nastavitelny doporuceny cols a rows
+
+xul:
+	- Implement file upload
+	pri obnoveni session poslat nejaky prikaz na clear nebo tak neco.. jinak se vsecky elementy vytvori znovu a budou v DOMu dvakrat...
+	
+	
+BUGS:
+	upload a dowload souboru vzdy preplacne aktualni... nelze stahnout/uploadovat vice souboru najednou.
+
+podivat jak libxml2 dokument preziva pickle...

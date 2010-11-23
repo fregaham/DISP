@@ -1,0 +1,12 @@
+<ui>
+	<VBox>
+		<HBox>
+			<StaticText text="Email here:"/>
+			<LineEdit id="edit_email" />
+		</HBox>
+		<HBox>
+			<Button id="ok" text="OK" />
+			<Button id="cancel" text="Cancel" />
+		</HBox>
+	</VBox>
+</ui>

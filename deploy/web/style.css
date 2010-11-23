@@ -1,0 +1,120 @@
+
+body{
+	background-color:#fafff0;
+	color:#000000;
+	
+	font-family: sans-serif;
+	/*width: 100%;*/
+}
+
+input.line_edit, input.checkbox {
+	border: 1px inset #000;
+	color: #000;
+	-moz-border-radius: 3px;
+	
+	background: #fff;
+	padding: 3px;
+}
+
+input.button {
+	border: 1px outset #000;
+	color: #000;
+	-moz-border-radius: 3px;
+	
+	background: #fff;
+	
+	margin: 3px;
+	padding: 3px;
+	/*font-size: 1.2em;*/
+}
+
+
+
+input.button:hover {
+	background: #8ecdf0;
+}
+
+input.button:active {
+	background: #8ecdf0;
+	border: 1px inset #000;
+}
+
+.static_text {
+	font-family: serif;
+}
+
+div.table {
+	background: #8ecdf0;
+	margin: 4px;
+}
+
+table.table {
+
+	width: 100%;
+	
+	/*margin: 1em;*/
+	border: 1px solid black;
+	background: #ffc;
+	
+	border-collapse: collapse;
+}
+
+table.table > tbody > tr > td {
+	/*background: #000;*/
+	border: 1px solid #000;
+	/*margin: 0px;*/
+}
+
+table.table > tbody > tr > td > a{
+	color: black;
+	text-decoration: none;
+}
+
+tr.table_header {
+	background: #8ecdf0;
+	font-weight: bold;
+}
+
+tr.table_selected {
+	background: #aff7f7;
+}
+
+div.table_nav {
+	font-size: 80%;
+	margin-left: 1em;
+}
+
+
+table.hpane {
+	width: 100%;
+}
+
+table.hpane > tbody > tr > td {
+	width: 50%;
+	text-align: left;
+	
+	/*border: 1px solid black; */
+	/*padding: 1em;
+	margin: 1em;*/
+}
+
+div.tabbox_tabs > span {
+	border: 1px solid #000;
+	background: #eaeee0;
+}
+
+div.tabbox_tabs > span.tabbox_selected {
+	border-bottom: 1px solid #fafff0;
+	background: #fafff0;
+}
+
+
+div.tabbox_tabs > span > a {
+	text-decoration: none;
+	padding: 0.5em;
+}
+
+div.tabbox_panel {
+	border: 1px solid #000;
+	padding: 0.5em;
+}

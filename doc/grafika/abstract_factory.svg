@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   inkscape:label="Pozadí"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docbase="/home/marcho/public_html/bc/doc/grafika"
+   sodipodi:docname="abstract_factory.svg">
+  <defs
+     id="defs3159">
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker4408"
+       style="overflow:visible">
+      <path
+         id="path4299"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       style="overflow:visible"
+       id="TriangleOutM">
+      <path
+         d="M 5.77,0 L -2.88,5 L -2.88,-5 L 5.77,0 z "
+         transform="scale(0.4,0.4)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         id="path16662" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="395.40432"
+     inkscape:cy="714.17785"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="993"
+     inkscape:window-height="667"
+     inkscape:window-x="31"
+     inkscape:window-y="21" />
+  <metadata
+     id="metadata3162">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Vrstva 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       id="rect2278"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999964;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       y="207.23331"
+       x="135.21187"
+       height="58.748886"
+       width="113.99997" />
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text2284"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="221.11023"
+       x="192.19528"><tspan
+         id="tspan2286"
+         y="221.11023"
+         x="192.19528"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">UIFactoryBase</tspan></text>
+    <path
+       id="path2383"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       d="M 603.15407,223.88952 L 250.21547,224.0899"
+       sodipodi:nodetypes="cc" />
+    <path
+       id="path2389"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 187.96872,318.45628 L 187.96872,266.47719" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 198.96872,337.37789 L 187.70132,317.86218 L 176.70132,337.27188 L 198.96872,337.37789 z "
+       id="path3179"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 105.08484,390.36218 L 105.08484,337.36218 L 214.96872,337.23591"
+       id="path3205"
+       sodipodi:nodetypes="ccc" />
+    <path
+       id="path3207"
+       d="M 265.58535,390.36218 L 265.58535,337.36218 L 189.4153,337.36218"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 134.61228,226.36218 L 248.61228,226.36218"
+       id="path3209" />
+    <text
+       x="192.19528"
+       y="242.11023"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text3211"
+       xml:space="preserve"
+       sodipodi:linespacing="125%"><tspan
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif"
+         x="192.19528"
+         y="242.11023"
+         id="tspan3213">CreateButton()</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text3215"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="258.93369"
+       x="191.18845"><tspan
+         id="tspan3217"
+         y="258.93369"
+         x="191.18845"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">CreateForm()</tspan></text>
+    <rect
+       width="113.99997"
+       height="59.736149"
+       x="48.068306"
+       y="390.23987"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999982;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect3219" />
+    <text
+       x="105.05173"
+       y="404.11023"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text3221"
+       xml:space="preserve"
+       sodipodi:linespacing="125%"><tspan
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif"
+         x="105.05173"
+         y="404.11023"
+         id="tspan3223">UIFactoryGtk</tspan></text>
+    <path
+       id="path3225"
+       d="M 47.468719,409.36218 L 161.46872,409.36218"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text3227"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="425.11023"
+       x="105.05173"><tspan
+         id="tspan3229"
+         y="425.11023"
+         x="105.05173"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">CreateButton()</tspan></text>
+    <text
+       x="104.04489"
+       y="441.93369"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text3231"
+       xml:space="preserve"
+       sodipodi:linespacing="125%"><tspan
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif"
+         x="104.04489"
+         y="441.93369"
+         id="tspan3233">CreateForm()</tspan></text>
+    <rect
+       id="rect3251"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999928;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       y="390.24359"
+       x="207.15134"
+       height="59.598915"
+       width="113.99997" />
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text3253"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="404.11023"
+       x="264.13477"><tspan
+         id="tspan3255"
+         y="404.11023"
+         x="264.13477"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">UIFactoryWeb</tspan></text>
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 206.55175,409.36218 L 320.55175,409.36218"
+       id="path3257" />
+    <text
+       x="264.13477"
+       y="425.11023"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text3259"
+       xml:space="preserve"
+       sodipodi:linespacing="125%"><tspan
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif"
+         x="264.13477"
+         y="425.11023"
+         id="tspan3261">CreateButton()</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text3263"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="441.93369"
+       x="263.12793"><tspan
+         id="tspan3265"
+         y="441.93369"
+         x="263.12793"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">CreateForm()</tspan></text>
+    <rect
+       width="113.99997"
+       height="20.648529"
+       x="425.1514"
+       y="290.86218"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999964;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect3267" />
+    <text
+       x="482.1348"
+       y="305.06339"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text3269"
+       xml:space="preserve"
+       sodipodi:linespacing="125%"><tspan
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif"
+         x="482.1348"
+         y="305.06339"
+         id="tspan3271">ButtonBase</tspan></text>
+    <rect
+       id="rect3291"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999964;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       y="354.27817"
+       x="356.52829"
+       height="20.648529"
+       width="113.99997" />
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text3293"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="368.47937"
+       x="413.51169"><tspan
+         id="tspan3295"
+         y="368.47937"
+         x="413.51169"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">ButtonWeb</tspan></text>
+    <rect
+       width="113.99997"
+       height="20.648529"
+       x="492.72556"
+       y="354.27817"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999964;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect3303" />
+    <text
+       x="549.70898"
+       y="368.47937"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text3305"
+       xml:space="preserve"
+       sodipodi:linespacing="125%"><tspan
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif"
+         x="549.70898"
+         y="368.47937"
+         id="tspan3307">ButtonGtk</tspan></text>
+    <path
+       d="M 482.15134,321.84098 L 482.15134,311.88337"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path3309"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cccc"
+       id="path3311"
+       d="M 493.41874,341.37789 L 482.15134,321.86218 L 471.15134,341.27188 L 493.41874,341.37789 z "
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="ccc"
+       id="path3313"
+       d="M 413.43705,353.89789 L 413.43705,341.07647 L 470.28522,341.12877"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 550.15134,353.89789 L 550.15134,341.07647 L 493.30317,341.12877"
+       id="path3321"
+       sodipodi:nodetypes="ccc" />
+    <rect
+       id="rect3323"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999964;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       y="407.99106"
+       x="425.1514"
+       height="20.648529"
+       width="113.99997" />
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text3325"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="422.19226"
+       x="482.1348"><tspan
+         id="tspan3327"
+         y="422.19226"
+         x="482.1348"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">FormBase</tspan></text>
+    <rect
+       width="113.99997"
+       height="20.648529"
+       x="356.52829"
+       y="471.40704"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999964;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect3329" />
+    <text
+       x="413.51169"
+       y="485.60825"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text3331"
+       xml:space="preserve"
+       sodipodi:linespacing="125%"><tspan
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif"
+         x="413.51169"
+         y="485.60825"
+         id="tspan3333">FormWeb</tspan></text>
+    <rect
+       id="rect3335"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999964;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       y="471.40704"
+       x="492.72556"
+       height="20.648529"
+       width="113.99997" />
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text3337"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="485.60825"
+       x="549.70898"><tspan
+         id="tspan3339"
+         y="485.60825"
+         x="549.70898"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">FormGtk</tspan></text>
+    <path
+       sodipodi:nodetypes="cc"
+       id="path3341"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 482.15134,438.96986 L 482.15134,429.01225" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 493.41874,458.50677 L 482.15134,438.99106 L 471.15134,458.40076 L 493.41874,458.50677 z "
+       id="path3343"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 413.43705,471.02677 L 413.43705,458.20535 L 470.28522,458.25765"
+       id="path3345"
+       sodipodi:nodetypes="ccc" />
+    <path
+       sodipodi:nodetypes="ccc"
+       id="path3347"
+       d="M 550.15134,471.02677 L 550.15134,458.20535 L 493.30317,458.25765"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#marker4408);stroke-miterlimit:4;stroke-dasharray:6, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 321.07991,423.36218 L 338.22277,423.36218 L 338.22277,362.36218 L 356.07991,362.36218"
+       id="path3349" />
+    <path
+       id="path5290"
+       d="M 321.07991,422.86218 L 338.22277,422.86218 L 338.22277,483.86218 L 356.07991,483.86218"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#marker4408);stroke-miterlimit:4;stroke-dasharray:6, 2;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#marker4408);stroke-miterlimit:4;stroke-dasharray:6, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 162.96872,422.86218 L 180.11158,422.86218 L 180.11158,512.43361 L 644.60721,512.30462 L 644.42982,365.21755 L 606.54015,365.29075"
+       id="path5294"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#marker4408);stroke-miterlimit:4;stroke-dasharray:6, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 644.68301,481.54075 L 606.82586,481.82647"
+       id="path5296"
+       sodipodi:nodetypes="cc" />
+    <rect
+       id="rect5299"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999964;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       y="212.86218"
+       x="604.29004"
+       height="20.648529"
+       width="113.99997" />
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       id="text5301"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       y="227.06339"
+       x="661.27344"><tspan
+         id="tspan5303"
+         y="227.06339"
+         x="661.27344"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:DejaVu Serif">Client</tspan></text>
+    <path
+       d="M 661.79691,233.86218 L 661.72095,420.21993 L 539.57259,420.49113"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       id="path5305"
+       sodipodi:nodetypes="ccc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5307"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       d="M 661.08262,298.86218 L 539.57259,299.06256" />
+  </g>
+</svg>

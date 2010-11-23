@@ -1,0 +1,52 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{Django}
+Django -- The Web framework for perfectionist with deadlines. [online],
+  [cit.~2006-04-20].
+\newline\urlprefix\url{http://www.djangoproject.com/}
+
+\bibitem{json}
+Introducing JSON. [online], [cit.~2006-04-20].
+\newline\urlprefix\url{http://www.json.org/}
+
+\bibitem{TurboGears}
+TurboGears -- Front-to-Back Web Development. [online], [cit.~2006-04-20].
+\newline\urlprefix\url{http://www.turbogears.org/}
+
+\bibitem{xulrunner}
+XULRunner. [online], 20 April 2006, [cit.~2006-04-20].
+\newline\urlprefix\url{http://developer.mozilla.org/en/docs/XULRunner}
+
+\bibitem{sqlobject}
+BICKING, I.: Main SQLObject documentation. [online], [cit.~2006-04-20].
+\newline\urlprefix\url{http://www.sqlobject.org/SQLObject.html}
+
+\bibitem{mozilla}
+BOSWELL, D.; KING, B.; OESCHGER, I.; aj.: \emph{Creating Applications with
+  Mozilla}. Sebastopol, California, USA: O'Reilly \& Associates, Inc, první
+  vydání, 2002, ISBN 0-596-00052-9, 474 s.
+
+\bibitem{pygtk}
+FINLAY, J.: PyGTK 2.0 Reference Manual. [online], Version 2.8.1 September 17,
+  2005 [cit.~2006-04-20].
+\newline\urlprefix\url{http://www.pygtk.org/pygtk2reference/index.html}
+
+\bibitem{vzory}
+GAMMA, E.; HELM, R.; JOHNSON, R.; aj.: \emph{Návrh programù pomocí vzorù --
+  Stavební kameny objektovì orientovaných programù}. Praha: Grada, první
+  vydání, 2003, ISBN 80-247-0302-5, 388 s.
+
+\bibitem{w3RWC}
+JACKSON, D.: Rich Web Clients Activity Statement. [online], v 1.11 2006/04/05,
+  [cit.~2006-04-20].
+\newline\urlprefix\url{http://www.w3.org/2006/rwc/Activity.html}
+
+\end{thebibliography}

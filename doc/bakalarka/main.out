@@ -1,0 +1,30 @@
+\BOOKMARK [0][-]{section*.1}{Obsah}{}
+\BOOKMARK [0][-]{chapter.1}{\332vod}{}
+\BOOKMARK [0][-]{chapter.2}{Soucasn\375 stav}{}
+\BOOKMARK [1][-]{section.2.1}{Jazyk Python}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Objektove orientovan\375 pr\355stup pri tvorbe aplikac\355}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Tvorba dynamick\375ch webov\375ch str\341nek}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{Existuj\355c\355 n\341stroje pro tvorbu webov\375ch aplikac\355}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.2}{Rozd\355ly v tvorbe desktopov\375ch a webov\375ch aplikac\355}{section.2.3}
+\BOOKMARK [0][-]{chapter.3}{N\341vrh knihovny pro tvorbu nez\341visl\375ch informacn\355ch syst\351mu}{}
+\BOOKMARK [1][-]{section.3.1}{Specifikace pozadavku}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Architektura}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{N\341vrh programov\351ho rozhran\355 \(API\)}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{Reprezentace stavu aplikace}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.2}{Ud\341losti}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.3}{Komponenty nez\341visl\351ho uzivatelsk\351ho rozhran\355}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.4}{Pr\341ce s datab\341z\355}{section.3.3}
+\BOOKMARK [0][-]{chapter.4}{Implementace}{}
+\BOOKMARK [1][-]{section.4.1}{Webov\375 front-end}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.1.1}{Serializace a ulozen\355 stavu aplikace}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.2}{Vykreslen\355 komponent}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.3}{Zpracov\341n\355 vstupu}{section.4.1}
+\BOOKMARK [1][-]{section.4.2}{XUL front-end}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{Co je to XUL}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{Komunikacn\355 protokol mezi klientem a serverem}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{GTK front-end}{chapter.4}
+\BOOKMARK [1][-]{section.4.4}{Integrace s knihovnou SQLObject}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Z\341ver}{}
+\BOOKMARK [0][-]{appendix.A}{Uk\341zkov\341 aplikace}{}
+\BOOKMARK [1][-]{section.A.1}{K\363d aplikace}{appendix.A}
+\BOOKMARK [1][-]{section.A.2}{Nasazen\355 aplikace}{appendix.A}

@@ -1,0 +1,35 @@
+DISP -- Independent Information System in Python
+
+This project is my Bachelor Thesis I did in 2006, 
+
+the thesis text and program comments are, unfortunately, in Czech, 
+
+I may translate it and update to recent version of Python someday...
+
+The english abstract follows:
+
+This work tries to close a gap between development of information systems as 
+desktop or as web applications and to create a framework for development of 
+‘independent information systems’. It consists of a design and its 
+implementation in a Python library, which allows development of programs
+independent of the form of user interface. It defines a programming interface
+ for ‘independent user iterface’ and implements it using three distinct 
+‘front-ends’ – Web-, GTK- and XUL- front-ends.
+
+
+
+The 
+
+formencode/
+simplejson/
+sqlobject/
+
+directories are external libraries in some old versions that are known to 
+work with DISP. They have their own copyrights and licenses. 
+
+simplejson http://pypi.python.org/pypi/simplejson/, licensed under MIT license
+formencode http://pypi.python.org/pypi/FormEncode, licensed under PSF
+sqlobject http://sqlobject.org, licensed under LGPL.
+
+The rest is (c) 2006 by Marek Schmidt (me) and available under GPL.
+

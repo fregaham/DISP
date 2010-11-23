@@ -1,0 +1,1351 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% tento soubor pouzijete jako zaklad
+% kodovaní: iso-8859-2 (zmena prikazem iconv, recode nebo cstocs)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% zpracování: make, make pdf, make desky, make clean
+% pøipomínky posílejte na e-mail: peringer AT fit.vutbr.cz
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Pøíklad pou¾ití tøídy "fitprj"
+% (c) David Øezáè, 2002
+% [tady chybí licenèní podmínky - TODO]
+% 
+% 2005-04-15 PP: drobné modifikace a pøidání prohlá¹ení, Makefile
+%
+% Pøeklad pomocí  'latex' nebo 'pdflatex'
+% zpracování pou¾ité literatury pomocí 'bibtex'
+%
+% Pøesné vysvìtlení jednotlivých pøíkazù je uveden v dokumentaci tøídy.
+%
+% Dokumentaci k tøídì získáme pøekladem
+% 'latex fitprj.dtx'
+%
+% Vlastní tøídu vyrobíme pøekladem
+% 'latex fitprj.ins'
+% --------------------------------------------------------------------
+%
+% pokud pou¾ijeme volbu "czech" budou nápisy na úvodních stránkách v èe¹tinì,
+% jinak v angliètinì
+\documentclass[czech]{fitprj}
+
+% zde zvolíme kódování "latin2" pro iso8859-2 nebo "cp1250" pro windows-1250
+\usepackage[latin2]{inputenc}
+
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{textcomp}
+
+% tady máme místo na pou¾ití dal¹ích balíèkù
+% balíèky babel, graphics a epsfig (resp. graphicx) jsou ji¾ zaøazeny (viz
+% dokumentace k tøídì)
+
+% =======================================================================
+% balíèek "hyperref" vytváøí klikací odkazy v pdf, pokud tedy pou¾ijeme pdflatex
+% problém je, ¾e balíèek hyperref musí být uveden jako poslední, tak¾e nemù¾e
+% být v ¹ablonì
+\ifx\pdfoutput\undefined % nejedeme pod pdflatexem
+\else
+  \usepackage{color}
+  \usepackage[colorlinks,hyperindex,plainpages=false,pdftex]{hyperref}
+  \definecolor{links}{rgb}{0.4,0.5,0}
+  \definecolor{anchors}{rgb}{1,0,0}
+  \def\AnchorColor{anchors}
+  \def\LinkColor{links}
+  \def\pdfBorderAttrs{/Border [0 0 0] } % bez okrajù kolem odkazù
+  \pdfcompresslevel=9
+\fi
+
+% =======================================================================
+% =======================================================================
+% Zde nadefinujeme hodnoty, které pak budou pou¾ity pøi vytváøení úvodních
+% stránek
+
+\date{27. dubna 2006}
+\setyear{2006}
+\author{Marek Schmidt}
+\title{Tvorba informaèních systémù\\ v~jazyku Python}
+
+% typ projektu; zde jsou mo¾nosti DP, SP, RP, PGST, PGSD
+\FITproject{BP}
+
+% ústav (zkratka) - mo¾nosti: UIFS, UPSY, UITS, UPGM
+\FITdepartment{UITS} %% asi zbyteèné. PP
+
+% k jaké pøíle¾itosti je práce pøipravena
+\requirements{obhajobu bakaláøské práce} %%PP asi zbyteèné
+
+% prohlá¹ení
+\edeclaration{
+    Prohla¹uji, ¾e jsem tuto bakaláøskou práci vypracoval samostatnì pod
+    vedením Ing. Ale¹e Smrèky.
+%     Dal¹í informace mi poskytli ........
+    Uvedl jsem v¹echny literární prameny a publikace, ze kterých jsem èerpal.
+    }
+
+% podìkování - nepovinné, pou¾ijte jen v opravdu významných pøípadech
+% \acknowledgements{Dìkuji svému vedoucímu bakaláøské práce Ing. Ale¹i Smrèkovi za cenné rady a podnìty. }
+
+% abstrakt
+\fitabstractCZ{ Práce se zabývá zmen¹ením propastí mezi tvorbou informaèních systémù jako¾to desktopových nebo webových aplikací a vytvoøením prostøedí pro tvorbu tzv. nezávislých informaèních systémù. Obsahem práce je návrh a implementace knihovny v jazyku Python, která umo¾òuje vytváøet programy nezávisle na formì u¾ivatelského rozhraní. Definuje programové rozhraní pro ``nezávislé u¾ivatelské rozhraní'' a implementuje jej v tøech rùzných ``front-endech'' -- Webovém, desktopovém na knihovnì GTK a na platformì Mozilla v technologii XUL.
+             }
+
+\fitabstract{ This work tries to close a gap between development of information systems as desktop or as web applications and to create a framework for development of `independent information systems'. It consists of a design and its implementation in a Python library, which allows development of programs independent of the form of user interface. It defines a programming interface for `independent user iterface' and implements it using three distinct `front-ends' -- Web-, GTK- and XUL- front-ends.
+}
+
+% klíèová slova
+\keywordsCZ{nezávislé informaèní systémy, python, webové aplikace, Apache, mod\_python, GTK, XUL}
+\keywords{independent information systems, python, web applications, Apache, mod\_python, GTK, XUL}
+
+% =======================================================================
+% =================================================================
+\begin{document}
+% generujeme titulní stránku (pozor: popis desek je v desky.tex)
+\maketitle
+
+% za titulní stránku ruènì vlo¾íte oficiální zadání
+
+% stránka s pøedáním práv bude a¾ za zadáním!
+\grantrights
+
+% stránka s abstraktem a klíèovými slovy (a podìkováním)
+\abstractkeywordsCZ
+\abstractkeywords
+
+% tento pøíkaz musí být uveden jako poslední;
+\FITstart
+
+% ----------------------------------------------------------------
+% ----------------------------------------------------------------
+% zde se ji¾ mù¾eme vyjádøit v plné ¹íøi
+
+\chapter{Úvod}
+
+% Smyslem informaèních systémù je poskytovat u¾ivatelùm pøístup k informacím.
+
+Cílem této práce je vytvoøit knihovnu pro tvorbu informaèních systémù v jazyku Python. Existuje mnoho nástrojù pro tvorbu informaèních systémù, a» u¾ jako desktopových aplikací, nebo jako webových aplikací. Tato práce se zabývá mo¾ností spojení tvorby informaèních systémù jako¾to desktopových nebo jako webových aplikací -- tedy tvorbou \emph{nezávislých informaèních systémù}. Sys\-tém vytvoøený za pomoci této knihovny se tak bude moci pou¾ít jako desktopová i~jako webová aplikace beze zmìny zdrojového kódu.
+
+
+
+V první èásti této zprávy se pokusím pøedstavit jazyk Python, popsat základní pojmy objektovì orientovaného programování a pokusím se nalézt základní rozdíly mezi desktopovými a webovými aplikacemi.
+
+V druhé èásti pak navrhnu knihovnu pro tvorbu nezávislých informaèních systémù. Specifikuji po¾adavky, navrhnu její architekturu a základní principy.
+
+Tøetí závìreèná èást popisuje implementaci knihovny a její tøi `front-endy'.
+% Smyslem informaèních systémù je spravovat informace, manipulovat s nimi a prezentovat je u¾ivateli. 
+
+% \ldots
+
+
+
+
+
+%\emph{Informaèní systém mù¾e být webová nebo desktopová aplikace, a v tom je rozdíl.
+%Pøevést jedno na druhé je netriviální. Ov¹em nezávislý informaèní systém není 
+%závislý na tom, zda je spu¹tìn jako webová nebo jako desktopová aplikace.
+%Cílem tohoto projektu je vytvoøit prostøedí pro tvorbu nezávislých informaèních systémù.
+%Jo, a bude to v Pythonu.}
+
+\chapter{Souèasný stav}
+
+\section{Jazyk Python}
+
+Jazyk Python je dynamický objektovì orientovaný jazyk. Mezi jeho vlastnosti patøí:
+
+\begin{itemize}
+\item Snadná a èistá syntaxe -- Není zbyteènì ``ukecaný''. Programátor tak dosahuje vy¹¹í produktivity práce. Syntaxe vyu¾ívá i bílé znaky, èím¾ se sna¾í vnutit programátorovi pøehledný styl zápisu programu. Programy napsané v jazyku Python jsou tak snadno èitelné.
+\item Dynamicky typovaný -- Typová kontrola probíhá a¾ za bìhu programu. 
+\item Objektovì orientovaný -- Umo¾òuje i vícenásobnou dìdiènost.
+\item Modulární -- Podporuje i hiearchické jmenné prostory, vhodný i pro rozsáhlé projekty.
+\item Mocná standardní knihovna -- Obsahuje prostøedky pro tvorbu webových i desktopových aplikací, pøístupu k databázím, podporu rùzných sí»ových protokolù, práci s XML a jiné. 
+\item Svobodný -- Existuje svobodná implementace portovaná na vìt¹inu dùle¾itých operaèních systémù. Programy napsané v Pythonu jsou tak jednodu¹e pøenositelné.
+\end{itemize}
+
+Pro své vlastnosti se vyu¾ívá pøedev¹ím jako prototypovací nástroj, nástroj pro rychlý vývoj aplikací (RAD) nebo pro skriptování aplikací. 
+%\ldots
+
+\section{Objektovì orientovaný pøístup pøi tvorbì aplikací}
+
+Aplikace vidìná objektovì orientovaným pohledem není tvoøena nièím jiným, ne¾ mno¾inou vzá\-je\-mnì se ovlivòujících \emph{objektù}. 
+
+Objekty mají tøi vlastnosti:
+	
+\begin{enumerate}
+\item Identita -- To, co odli¹uje objekty od sebe.
+\item Stav -- Urèen atributy. Atributy mívají jméno (barva, velikost), a hodnotu (èervená, 7). Hodnotou atributu mù¾e být také odkaz (reference) na jiný objekt.
+\item Chování -- Urèeno metodami. Metody bývají obvykle toté¾ co procedury v strukturovanì orientovaném programování s tím, ¾e jako jejich první argument je samotný objekt. Metoda tak mù¾e upravovat stav objektu nebo volat metody jiných objektù (také nazýváno jako ``posílání zpráv jiným objektùm'').
+\end{enumerate}
+
+Objektovì orientovaný pøístup je vhodný zejména v pøípadì, ¾e smyslem aplikace je modelovat
+reálné nebo konkrétní objekty. Knihovny pro tvorbu desktopových aplikací bývají vìt¹inou objektovì orientované, proto¾e tak mohou pøirozenì pracovat s objekty u¾ivatelského rozhraní, jako jsou okna, tlaèítka, textová pole a podobnì.
+
+%\ldots
+
+% \subsection {Objektovì orientované programování v dynamických jazycích}
+% 
+% Dynamicky typované jazyky umo¾òují vìt¹í volnost programování ne¾ staticky typované jazyky. Jednou takovu výhodou je \emph{duck typing}. 
+% 
+% \ldots
+
+%\subsubsection {Implementace nìkterých návrhových vzorù}
+
+%\subsubsection {Duck typing}
+
+\section{Tvorba dynamických webových stránek}
+
+% Systém WWWW (World Wide Web, zkrácenì jen \emph{web}) \ldots
+
+Systém WWW (World Wide Web -- zkrácenì webu) je zalo¾en na architektuøe klient-server. Server poskytuje hypertextové dokumenty, obvykle ve formátu HTML (HyperText Markup Language). Dokumenty jsou na serveru identifikovány pomocí URL (Uniform Resurce Locator) a vzájemnì jsou propojeny pomocí hypertextových odkazù. Klienti se serverem komunikují pomocí protokolu HTTP (HyperText Tranfer Protocol).
+
+Klient (obvykle webový prohlí¾eè) obdr¾í od u¾ivatele URL a na základì té vznese HTTP po¾adavek na daný dokument konkrétnímu HTTP serveru (souèástí URL je také adresa serveru). Server pak odpoví HTTP odpovìdí, která obsahuje buïto po¾adovaný dokument nebo chybu.
+%Klient pak u¾ivateli zobrazuje konkrétní dokument
+% na základì zadané URL. 
+
+Dynamické webové stránky tento systém roz¹iøují o dva dal¹í principy:
+
+\begin{enumerate}
+\item Na dané URL se nenachází konkrétní dokument, na místo toho se tam nachází skript, který 
+je spu¹tìn a teprve jeho výstup je poslán klientovi jako výsledný dokument. Toto probíhá
+pro klienta naprosto prùhlednì.
+\item Dokumenty mohou obsahovat formuláøe, kterými mù¾e klient odeslat data na server.
+\end{enumerate}
+
+Skript je tedy program, který je na serveru spu¹tìn pøi ka¾dém HTTP po¾adavku, jeho èinnost 
+se dá shrnout do tøí krokù:
+
+% tohole je mozna az moc hloupe... 
+\begin{enumerate}
+\item Zpracuje vstupy z formuláøù, v závislosti na pou¾ité metodì HTTP po¾adavku.
+\item Provede u¾iteènou práci, napøíklad ve spoluprácí s databází.
+\item Vytvoøí výsledný dokument, který se po¹le klientovi.
+\end{enumerate}
+
+Protokol HTTP byl navr¾en jako bezestavový. Ka¾dý HTTP po¾adavek je tedy nezávislý na ostatních.
+Skripty v¹ak èasto potøebují navázat na pøedchozí po¾adavky a uchovat data v prùbìhu \emph{relace} --
+po sobì následujících po¾adavkù stejného klienta.
+
+Webový server má prakticky dvì mo¾nosti, jak uchovat data v prùbìhu relace:
+
+\begin{itemize}
+\item Uchovávat data u klienta -- V takovémto pøípadì musí zakódovat data do øetìzce a 
+tento øetìzec ulo¾it do formuláøe jako skrytý HTML prvek \emph{input}. Webový prohlí¾eè na 
+stranì klienta pak pøi dal¹ím odeslání formuláøe ode¹le formuláø i se zakódovanými daty.
+
+Tato mo¾nost není vhodná z nìkolika dùvodù: Data jsou pøená¹ena zbyteènì ze serveru na klienta a pak zase zpìt. Server si musí dále dávat velký pozor na to, jaká data mu pøi¹la, proto¾e klient mìl mo¾nost data pøeèíst a pøípadnì pozmìnit.
+
+\item Uchovávat data na serveru -- Pak staèí klientovi odeslat klíè relace, který identifikuje danou relaci. Klient pak posílá relaèní klíè pøi ka¾dém dal¹ím po¾adavku. Podle tohoto klíèe pak server najde v úlo¾i¹ti data patøící této relaci.
+
+\end{itemize}
+
+\subsection{Existující nástroje pro tvorbu webových aplikací}
+
+Nástrojù pro tvorbu dynamických webových stránek, èi vzne¹enìji øeèeno \emph{webových aplikací}, existuje celá øada. Zde se budu zabývat pøedev¹ím tìmi zalo¾enými na jazyku Python.
+
+\subsubsection{CGI}
+
+Common Gateway Interface (CGI) je standardní rozhraní pro pou¾ití externích programù z we\-bo\-vých serverù. Programy zpracovávají standardní vstup a zapisují na standardní výstup ve speciálním formátu, který je pøedepsán CGI. Výstup musí obsahovat hlavièku, ve které popisuje svùj výstup nebo posílá pøíkazy serveru.
+
+Výhoda pou¾ítí CGI je v tom, ¾e je to standard -- lze pou¾ít jakýkoliv program napsán v libovolném jazyce. Psaní programù s CGI rozhraním je také snadné, proto¾e se nemusí zabývat sí»ovými protokoly, staèí jen zapisovat na standardní výstup a o v¹e ostatní se postará HTTP server.
+
+Nevýhoda pou¾ití CGI je v pomalosti. Pro ka¾dý nový po¾adavek je toti¾ potøeba vytvoøit nový proces. Problém pomalosti øe¹í napøíklad roz¹íøení FastCGI.
+
+Standardní knihovna Pythonu obsahuje modul cgi, který ulehèuje tvorbu CGI skriptù.
+
+\subsubsection{Tvorba webových aplikací s Apache a mod\_python}
+
+Mod\_python je modul, který integruje interpret Pythonu do HTTP serveru Apache. Proto¾e tento interpret je spu¹tìn pøímo v procesu obsluhujícící HTTP po¾adavky, mù¾e dosahovat vìt¹í rychlosti zpracování po¾adavkù ne¾ skripty spu¹tìné pøes rozhraní CGI. Umo¾òuje také uchovávat v pamìti procesu data mezi po¾adavky, co¾ se dá vyu¾ít napøíklad pro uchování pøipojení k databázi po celou dobu bìhu serveru.
+
+Mod\_python obsahuje moduly pro zpracování dat z webových formuláøù, zachování stavové informace a dal¹í.
+
+\subsubsection{Rozlièné webové frameworky}
+
+Webové frameworky jsou ucelené knihovny pro tvorbu webových aplikací. Umo¾òují vytváøet webové aplikace na vy¹¹í úrovni. Programátor se mù¾e zabývat pøedev¹ím logikou aplikace a nemusí øe¹it problémy nízké úrovnì, jako je HTTP protokol, zpracování HTML formuláøù a podobnì.
+
+Pøíkladem jsou TurboGears \cite{TurboGears} nebo Django \cite{Django}. Oba jsou zalo¾eny na modelu MVC (Model-View-Controller).
+
+MVC model tvorby aplikací rozdìluje aplikaci na tøi moduly:
+
+\begin{enumerate}
+\item Model -- Reprezentuje data, se kterými aplikace pracuje. Obvykle jako pøístup k SQL databázi pomocí objektovì-relaèního mapování.
+\item View -- Pohled. Zobrazuje data u¾ivateli. Tvoøí se obvykle pomocí HTML ¹ablon.
+\item Controller -- Øadiè. Implementuje logiku aplikace. Zpracovává vstupy od u¾ivatele a provádí zmìny modelu.
+\end{enumerate}
+
+Webvé frameworky postavené na jazyku Python umo¾òují rychlý vývoj aplikací, kde staèí napsat minimum kódu pro funkèní aplikaci.
+
+
+
+\subsection{Rozdíly v tvorbì desktopových a webových aplikací}
+
+% muje mala filozoficka uvaha:
+% Polo¾me si otázku, co dìlá desktopovou aplikaci desktopovou, a webovou aplikaci webovou?
+% Co se stane, kdy¾ zalo¾íme webový server, navá¾eme ho na lokální rozhraní, spustíme program
+% s vlo¾eným Geckem, nebo KHTML komponentou\ldots Dostaneme desktopovou aplikaci? A co kdy¾
+% naopak zabezpeèíme X server s nìjakou apliakcí do bezpeèného chrootu a otevøeme tuto aplikaci
+% do internetu? Dostaneme webovou aplikaci?
+% 
+% Na první otázku bych odpovìdìl ano, proto¾e to co se dìjì uvnitø mì jako u¾ivatele naprosto
+% nezajímá.
+% 
+% Odpovìï na druhou, asi ne. Smyslem webových aplikací je schopnost pøistupovat k 
+% nim za pomoci univerzálního klienta. I kdy¾, poè HTTP a ne X ? Princip je stejný...
+
+Architektura webových i desktopových aplikací je v principu stejná (viz Obrázek~\ref{pic:arch_web_desk}) V obou pøípadech si lze pøedstavit dva prvky, front-end, který
+komunikuje s u¾ivatelem a back-end, který provádí samotnou logiku aplikace.
+
+
+\begin{figure}[h]
+\begin{center}
+%\setlength{\unitlength}{0.345mm}
+\begin{picture}(340,140)
+\put(0,0){\dashbox{10}(340,50){}}
+\put(0,90){\dashbox{10}(340,50){}}
+\put(290, 4){\emph{Back-end}}
+\put(290, 94){\emph{Front-end}}
+\thicklines
+\put(10,10){\framebox(100,30){\shortstack{Aplikace \\ jako X client}}}
+\put(10,100){\framebox(100,30){X Server}}
+
+\thinlines
+\put(60,40){\vector(0,1){60}}
+\put(60,100){\vector(0,-1){60}}
+\put(64,70){X protokol}
+
+\thicklines
+\put(160,10){\framebox(100,30){\shortstack{Aplikace \\ na web serveru}}}
+\put(160,100){\framebox(100,30){Web Browser}}
+
+\thinlines
+\put(210,40){\vector(0,1){60}}
+\put(210,100){\vector(0,-1){60}}
+\put(214,70){HTML nad HTTP protokolem}
+\end{picture}
+\caption{Srovnání architektury webových a desktopových aplikací.}
+\label{pic:arch_web_desk}
+\end{center}
+\end{figure}
+
+V moderních operaèních systémech, které mají své desktopové prostøedí postavené na systému X~Window, 
+jsou aplikace X-klienty a komunikují s X-serverem, který se stará o zobrazení na obrazovku a vstupy 
+ze vstupních zaøízení. X~protokol je sí»ovì transparentní (stejnì jako HTTP protokol), nezále¾í tedy na tom, zda aplikace (X-klient) bì¾í na stejném stroji, u kterého sedí u¾ivatel.
+
+Jaké jsou tedy rozdíly?
+
+X protokol je stavový a pøená¹í data nízké úrovnì -- popisuje pøesnì, jak se má co zobrazit. Naopak
+protokol HTTP je bezestavový a jazyk HTML popisuje jen obsah dokumentu, konkrétní podobu dokumentu
+vytvoøí a¾ webový prohlí¾eè.
+
+Nároènost zpracování u webových aplikací tedy nese klient. Server pracuje jen s vy\-so\-ko\-úrov\-òo\-vým jazykem HTML. To umo¾òuje obsluhu mnohem více klientù najednou.
+
+Dal¹í výhodou webových aplikací je jejich dostupnost. Dobøe napsanou webovou aplikaci
+mù¾e okam¾itì pou¾ívat ka¾dý, kdo disponuje univerzálním klientem -- webovým 
+prohlí¾eèem.
+
+Na druhou stranu tvorba webových aplikací je obtí¾nìj¹í. Pøi tvorbì desktopových aplikací 
+jsou data uchována v pamìti procesu, který trvá po celou dobu práce u¾ivatele. Webové skripty
+v¹ak obvykle trvají jen po dobu zpracování HTTP po¾adavku. Programátor webových 
+aplikací se tak musí zabývat uchováváním dat v rámci relací.
+
+Webové aplikace také obvykle neposkytují takovou rozmanitost u¾ivatelského rozhraní jako
+desktopové aplikace, proto¾e se sna¾í nepøedpokládat nic o klientské technologii. Dobøe napsaná
+webová aplikace musí být pou¾itelná na osobních i kapesních poèítaèích nebo mobilních telefonech.
+
+Existuje mnoho snah o vytvoøení ``lep¹ího'' univerzálního klienta. 
+Mnohé z nich vyu¾ívají proprietární technologie (napøíklad jazyk Flash, Java Applety nebo rozlièná roz¹íøení jazyka HTML) a nejsou tedy pøístupné ka¾dému. Jiné jdou standardní cestou, napøíklad skriptování v jazyce ECMAScript, asynchonní pøenos XML dokumentù pøes HTTP protokol (AJAX), nebo snaha organizace w3c o specifikaci tzv. Rich Web Clients\cite{w3RWC}.
+
+% Soubory nástrojù pro grafická u¾ivatelská rozhraní obsahují mno¾ství prvkù, které 
+% se v jazyce HTML nevyskytují. 
+
+\chapter{Návrh knihovny pro tvorbu nezávislých informaèních systémù}
+
+\section{Specifikace po¾adavkù}
+
+
+Cílem projektu je ucelený rámec (framework) v jazyku Python, který bude poskytovat základní prostøedky pro tvorbu nezávislých informaèních systémù.
+
+Základní výèet po¾adavkù je následující:
+
+\begin{enumerate}
+\item Aplikaci napsanou pouze s vyu¾itím této knihovny pùjde spustit na lokálním poèítaèi jako desktopovou aplikaci nebo s pou¾itím HTTP serveru jako webovou aplikaci, a to beze zmìny zdrojového kódu aplikace.
+
+\item Pou¾ití aplikace jako webové aplikace by nemìlo pøedpokládat ¾ádné speciální po¾adavky týkající se pou¾itého webového prohlí¾eèe. Aplikace nesmí vy¾adovat podporu skriptovacího jazyka ECMAScript nebo jiných nestandardních technologií.
+
+Knihovna musí také zajistit uchování stavu aplikace v~prùbìhu relace, a~to pokud mo¾no naprosto transparentnì vzhledem k~programátorovi aplikace. Programátor by se nemìl zabývat tím, 
+¾e mezi zobrazením stránky a odesláním formuláøe zpìt na server byl proces aplikace pøeru¹en.
+
+\item Knihovna by mìla poskytovat základní prvky u¾ivatelského rozhraní, jako jsou tlaèítka, edi\-ta\-èní políèka, za¹krtávací tlaèítka a jiná udìlátka.
+
+\end{enumerate}
+
+\section{Architektura}
+
+Systém, který jako celek bude nezávislý na tom, zda se pou¾ije jako webová nebo jako desktopová aplikace bude muset mít èásti, které závislé budou. Tyto èásti budou pøicházet do styku s u¾ivatelem, a~budu jim tedy øíkat front-endy. Druhá èást je naopak èást, se kterou pøichází do styku programátor aplikace. Pro nìj se systém jeví jako nezávislý, proto¾e abstrahuje konkrétní podoby u¾ivatelských rozhraní. Tuto èást nazvu back-end.
+
+Programátor tvoøí aplikaci za pomocí objektù, které nejsou závislé na konkrétním front-endu. To jsou jednak objekty, které vùbec nijak nesouvisejí s u¾ivatelským rozhraním, jako je napøíklad spojení s databází. Dále to jsou objekty nezávislého u¾ivatelského rozhraní (NUI) -- tedy objekty, ze kterých byla abstrahována konkrétní podoba u¾ivatelského rozhraní.
+
+Aplikace komunikuje s~u¾ivatelským rozhraním buïto voláním metod pøíslu¹ných komponent, nebo se také mù¾e zapsat k~odebírání událostí na pøíslu¹né komponentì. Událostí mù¾e být napøíklad stisknutí tlaèítka, nebo vybrání polo¾ky z~nabídky. 
+
+Abstraktní nezávislé rozhraní je pak konkrétnì implementováno v jednotlivých front-endech. Implementace
+front-endù se bude výraznì li¹it podle toho, zda se jedná o~webový nebo o~desktopový front-end. 
+
+Webový front-end umo¾òuje pou¾ití aplikace jako webové aplikace prostøednictvím webového prohlí¾eèe. 
+Webové komponenty budou zobrazovat svùj výstup jako úseky kódu jazyce HTML a~budou umìt zpracovat vstupy z~webových formuláøù. K tomu vyu¾ijí HTTP server Apache s~modulem mod\_python. 
+
+Desktopový front-end bude implementován pomocí knihovny GTK. GTK komponenty tak budou jen obalovat objekty knihovny GTK. 
+
+\begin{figure}
+\centering
+\includegraphics[width=10cm]{architektura}
+\caption{Architektura nezávislého informaèního systému}
+\label{obr_architektura}
+\end{figure}
+
+\section{Návrh programového rozhraní (API)}
+
+Nejvìt¹í omezení plynou ze snahy pou¾ít knihovnu jako webovou aplikaci. Proto jsem pøi návrhu pøihlí¾el pøedev¹ím na to, zda daná funkce bude vùbec implementovatelná jen s~pou¾itím jazyka HTML.
+
+Bylo potøeba mít na zøeteli to, ¾e knihovna se bude pou¾ívat ve vícevláknovém prostøedí. Z~toho plyne omezení pou¾ití globálních a~statických promìnných. K~takovým promìnným je potøeba pøistupovat pouze se správným zamykáním prostøednictvím semaforù nebo jiných prostøedkù vý\-luè\-né\-ho pøístupu. Pokud mo¾no by se statické a~globální promìnné nemìly pou¾ívat vùbec.
+
+\subsection{Reprezentace stavu aplikace}\label{reprezentace_stavu}
+
+% Pøi pou¾ití aplikace jako webové aplikace v¹echny objekty budou existovat jen po dobu zpracování HTTP po¾adavku. 
+
+Uchováním stavu aplikace je potøeba se zabývat kvùli pou¾ití webového front-endu. Jak ji¾ bylo naznaèeno v~úvodu, jedno u¾ivatelské sezení znamená restartování procesu aplikace pøi ka¾dém HTTP po¾adavku. Je tedy potøeba vhodnì reprezentovat stav aplikace a~ten pak umìt uchovat a~opìt rekonstruovat do pùvodní podoby.
+
+V¹echny objekty knihovny musí umìt zachovat svùj stav v~prùbìhu relace. Programátor by se nemìl zabývat explicitním uchováváním stavu objektù. Ve¹keré objekty knihovny, které programátor pou¾ije by mìly být schopny zachovat svùj stav v~prùbìhu celé relace automaticky.
+
+Aby toto bylo snadno proveditelné, budou ve¹keré takové objekty ulo¾eny ve stromové struktuøe. Kdy¾ bude chtít programátor zachovat objekt po celou dobu sezení, vlo¾í tento nový objekt jako potomka nìkterého objektu, který se ji¾ v~tomto stromu nachází. Koøenem stromu pak bude objekt reprezentující samotnou relaci.
+
+Tøídy objektù, které budou mít tuto vlastnost budou odvozeny ze základní tøídy \verb|PObject| (viz tabulka~\ref{tabulka_1}).
+
+% \begin{itemize}
+% \item Ka¾dý objekt musí mít své jméno, èím¾ se bude odli¹ovat od svých sourozencù. Jméno mù¾e být pøiøazeno automaticky tak, aby v rámci jednoho ridèe mìlo ka¾dé dítì unikátní jméno.
+% \item Ka¾dý objekt získá unikátní identifikátor slo¾ením v¹ech jmen rodièù oddìlených teèkou.
+% \item Objekty získají odkaz na svého ``pøedka''
+% \item Objekty získají odkaz na ``koøen''
+% \item Objekty získají tabulku odkazù na následníky
+% \end{itemize}
+
+
+\begin{table}
+\begin{center}
+  \begin{tabular}{|l|p{10cm}|}
+    \hline
+	\multicolumn{2}{|c|}{Atributy tøídy PObject} \\ 
+	\hline \hline
+	\_name	&  Jméno objektu. Unikátní v rámci rodièe tohoto objektu. \\ 
+	\hline
+    \_id       &    Identifikátor objektu. Slo¾enina jmen v¹ech svých pøedkù oddìlena teèkou. \\
+    \hline
+    \_parent      &	Odkaz na vlastního rodièe         \\
+	\hline
+    \_root     &  Odkaz na koøen stromu  \\
+	\hline
+    \_children      &   Tabulka odkazù na dìti  \\
+    \hline
+  \end{tabular}
+  \caption{Rozhraní PObject}
+  \label{tabulka_1}
+\end{center}
+\end{table}
+
+%TODO: pøeformulovat.
+Zvlá¹tní tøídou pak bude tøída \verb|PRoot|, která bude implementovat koøen tohoto objektového stromu. Koøen by mìl být schopen provádìt ono zachování stavu celého stromu. Dále by mìl umìt najít objekt podle zadaného identifikátoru.
+
+Mù¾e nastat situace, kdy stav objektu ulo¾it nelze, nebo to není ¾ádoucí. Takovým pøíkladem mohou být externí zdroje, jako je napøíklad spojení s databází. Takové pøípady bude øe¹it tøída \verb|SessionWrapper|. Jejím argumentem bude konstruktor, který se bude volat pøi ka¾dém novém rekonstruování stavu aplikace. Objekt tøídy \verb|SessionWrapper| pak bude fungovat jako obálka nad zkonstruovaným objektem. 
+
+\subsection {Události}
+
+Události jsou zpùsob, jak zajistit, aby se rùzné objekty mohly dozvìdìt o zmìnì stavu jiného objektu. Samotná událost je reprezentována objektem tøídy \verb|Event|. Tøída \verb|Event| má dvì metody (viz tabulka~\ref{tabulka_event}).
+
+\begin{table}
+\begin{center}
+  \begin{tabular}{|l|p{10cm}|}
+    \hline
+	\multicolumn{2}{|c|}{Metody tøídy Event} \\ 
+	\hline \hline
+	addHandler (handler)	&  Zaregistruje \emph{handler} jako obsluhu události. \\ 
+	\hline
+    call (\ldots)      &   Zpùsobí vyvolání události u v¹ech zaregistrovaných obsluh událostí. Volitelnì se mù¾e této metodì pøedat promìnný poèet dal¹ích parametrù popisující událost. \\
+    \hline
+  \end{tabular}
+  \caption{Rozhraní Event}
+  \label{tabulka_event}
+\end{center}
+\end{table}
+
+Pou¾ití událostí je uvedeno na diagramu~\ref{obr_event_collab}. Jedná se o pøíklad události \emph{clicked} reprezentující stisknutí tlaèítka (objektu tøídy \verb|Button|). Programátor musí nejdøíve vytvoøit obsluhu události \emph{handler} a tu pak zaregistrovat u události pomocí metody \emph{addHandler}. Kdy¾ u¾ivatel prostøednictvím grafického u¾ivatelského rozhraní (GUI) stiskne tlaèítko, tak o této skuteènosti uvìdomí tlaèítko událost \emph{clicked}. Událost pak zavolá v¹echny své zaregistrované obsluhy událostí.
+
+\begin{figure}[b]
+\centering
+\includegraphics[width=10cm]{event_collab}
+\caption{Diagram kolaborace událostí}
+\label{obr_event_collab}
+\end{figure}
+
+% \subsection{Události}
+% 
+%  Princip událostí popisuje návrhový vzor \emph{Observer}.
+% 
+% %Pøi programování událostnì øízených aplikací se prog. 
+% 
+% 
+% 
+% Typický pøíklad pou¾ití je ukázán na následujícím kódu:
+% 
+% \begin{verbatim}
+% class MujForm(Form):
+%     def __init__(self, parent):
+%         Form.__init__(self, parent)
+% 
+%         self.button = Button (self, `Click me!')
+%         self.button.clicked.addHandler (self.onButtonClicked)
+%         self.label = Label (self, `Not yet clicked')
+% 
+%     def onButtonClicked (self):
+%         self.label.text = `Clicked!'
+% \end{verbatim}
+% 
+% Zde je vytvoøena tøída \verb|MujForm| reprezentující formuláø. Formuláø se bude skládat
+% z jednoho tlaèítka (tøída \verb|Button|) a jednoho popisného textu (tøída \verb|Label|). 
+% Na¹ím úkolem nech» je zmìnìní popisného textu po stisknutí tlaèítka. 
+% 
+% Aby toto bylo mo¾né, musí objekty tøídy \verb|Button| poskytovat pøístup k události stisknutí tlaèítka.
+% V tomto pøíkladì je to atribut \emph{clicked}. Programátor musí vytvoøit obsluhu události, co¾ mù¾e být
+% funkce nebo metoda nìkterého objektu. Zde je touto obsluhou metoda \emph{onButtonClicked}. Událost musí vìdìt
+% o této obsluze. Pøiøazení obsluhy události k události se provede pomocí metody \emph{addHandler}. Pøi výskytu události se pak zavolají v¹echny pøiøazené obsluhy.
+
+\subsection{Komponenty nezávislého u¾ivatelského rozhraní}
+
+Ka¾dý front-end bude implementovat ka¾dou komponentu ve zvlá¹tní tøídì. Aby byla zaruèena nezávislost, musí být pro danou komponentu v¹echny její implementace odvozené z jediné bázové tøídy, která bude popisovat její rozhraní. Pøi vytváøení instancí konkrétní tøídy v¹ak kód aplikace nesmí pøímo vìdìt, který front-end je právì pou¾íván, proto¾e jinak by aplikace nebyla nezávislá. Pou¾ijeme tedy návrhový vzor \emph{Abstraktní továrna}, jak je zobrazeno na obrázku~\ref{obr_abstract_factory} (pøevzato z~\cite{vzory}).
+
+Na obrázku jsou znázornìny dvì komponenty (formuláø \verb|Form| a tlaèítko \verb|Button|) a dvì jejich implementace ve front-endech Web a GTK. Klient (programátor aplikace) pracuje jen s abstraktními rozhraními. Virtuální metodou továrny \verb|CreateButton| mù¾e vytvoøit tlaèítko, ani¾ by vìdìl, která konkrétní tøída bude výsledkem této konstrukce.
+
+\begin{figure}
+\centering
+\includegraphics[width=14cm]{abstract_factory}
+\caption{Návrhový vzor \emph{Abstraktní továrna}}
+\label{obr_abstract_factory}
+\end{figure}
+
+\subsubsection{Ovládací prvky}
+
+Ovládací prvky by mìly pokrývat alespoò prvky známé z formuláøù v jazyce HTML, pøedev¹ím tedy tlaèítka, popisné textové a editaèní pole (viz tabulka~\ref{tabulka_prvky}).
+
+\begin{table}[b]
+\begin{center}
+  \begin{tabular}{|l|p{10cm}|}
+    \hline
+	Tøída & Popis \\ \hline \hline
+	Button & Tlaèítko. Mìlo by poskytovat nastavení popisu tlaèítka a pøístup k události \emph{stisknutí tlaèítka}. \\ \hline
+	LineEdit & Editaèní pole, které mù¾e editovat u¾ivatel. Musí poskytovat metodu k nastavení a ètení vyplnìného textu.\\ \hline
+	StaticText & Statický text, který nelze editovat u¾ivatelem. \\ \hline
+	CheckBox & Za¹krtávací tlaèítko. \\ \hline
+	RadioBox & Výbìr jedné z více mo¾ností \\ \hline
+  \end{tabular}
+  \caption{Základní mno¾ina ovládacích prvkù}
+  \label{tabulka_prvky}
+\end{center}
+\end{table}
+
+\subsubsection{Tabulky}
+
+Úèelem tabulky je pøedev¹ím zobrazení výsledkù SQL dotazù z databáze.
+Obecnì by v¹ak mìla být pou¾itelná pro zobrazování tabulkových dat z libovolného zdroje.
+Z tohoto dùvodu se vytvoøení tabulky sestává ze tøí èástí
+
+\begin{enumerate}
+\item Vytvoøení samotné tabulky, specifikace vlastností pro tabulku, jako je po¾adovaný poèet zobrazených øádkù a podobnì.
+\item Vytvoøení sloupcù. Sloupce by se mìly zabývat konkrétní formou zobrazení dat. (Napøíklad mù¾e øídit zarovnání, èi rùzné transformace formátu dat.)
+\item Vytvoøení \emph{kurzoru}. Kurzorem mù¾e být jakýkoli objekt implementující rozhraní tøídy \verb|Cursor| (viz tabulka~\ref{tabulka_cursor_interface}). 
+Úkolem kurzoru je na po¾ádání vracet data pro zobrazení v tabulce.
+\end{enumerate}
+
+Objekt, který chce být pou¾it jako kurzor musí implementovat toto rozhraní. Název je odvozen od databázových kurzorù, proto¾e plní podobnou funkci -- procházet v¹emi øádky tabulkových dat.
+
+% Rozhraní je nav¾eno tak, aby se v co mo¾ná nejvìt¹í míøe podobalo rozhraní klasického seznamu jazyka Python. Umo¾òuje tak kurzor iterovat, vracet konkrétní øádek tabulky pomocí operátoru [] nebo poèet øádkù pomocí funkce \verb|len|.
+
+\begin{table}
+\begin{center}
+  \begin{tabular}{|l|p{10cm}|}
+    \hline
+	\multicolumn{2}{|c|}{Metody tøídy Cursor} \\
+	\hline \hline
+    begin ()    &   Inicializace. Ve¹kerá práce s kurzorem bude provádìna mezi zavoláním begin a end. Napøíklad
+		odeslání SQL dotazu databázi by mohla být vhodná èinnost provádìna v metodì begin.\\
+	\hline
+	end ()	&	Ukonèení práce s kurzorem. Pro jakoukoliv dal¹í práci s kurzorem je potøeba znovu zavolat metodu begin. Chování kurzoru v jiném pøípadì není definováno.\\
+    \hline
+	getIterator	() &	Tato metoda by mìla vrátit iterátor nad v¹emy øádky dat. Toto umo¾òuje snadné procházení
+	v¹ech dat.
+	
+% \begin{verbatim}
+% cursor.begin()
+% for line in cursor:
+%     print line
+% cursor.end()
+% \end{verbatim}
+
+	\\ \hline
+	
+	getItem (i)	&	Metoda getItem by mìla vrátit øádek podle daného indexu \emph{i}. \\ \hline
+	
+	getItems (i, j) & Obdobnì jako metoda getItem vrací øádky podle zadaných indexù. Vrátí v¹ak seznam øádkù mezi indexy \emph{i} a \emph{j}.
+	 
+	\\ 
+	\hline
+	
+	getLength ()	&	Metoda getLength vrátí celkový poèet v¹ech øádkù. 
+	
+	\\ \hline
+	
+  \end{tabular}
+  \caption{Rozhraní tøídy Cursor}
+  \label{tabulka_cursor_interface}
+\end{center}
+\end{table}
+
+\subsubsection{Model rozvr¾ení komponent}
+
+Model rozvr¾ení komponent popisuje, kam se jednotlivé komponenty usadí v rámci okna aplikace.
+
+V existujících knihovnách pro tvorbu u¾ivatelských rozhraní se uplatòují dva principy:
+
+\begin{itemize}
+\item Absolutní umístìní -- Komponenty jsou umis»ovány podle zadaných souøadnic. 
+\item Hiearchické umístìní -- Komponenty se umis»ují do kontejnerù. Kontejnery mohou umis»ovat
+komponenty horizontálnì nebo vertikálnì a mohou obsahovat dal¹í kontejnery. 
+\end{itemize}
+
+\begin{figure}[b]
+\centering
+\includegraphics[width=11cm]{layout}
+\caption{Ukázka pou¾ití tøí rùzných kontejnerù (vertikální box, horizontální box a grid). }
+\label{obr_kontejnery}
+\end{figure}
+
+Kombinování tøí rùzných kontejnerù (vertikální a horizontální zarovnání a zarovnání do møí¾ky, viz obrázek~\ref{obr_kontejnery}) umo¾òuje vytváøet bohaté formuláøe, ani¾ by se musel programátor zabývat pøe\-sný\-m umístìním komponent. Výsledné u¾ivatelské rozhraní tak mù¾e být nezávislé na pou¾itém zobrazovacím zaøízení nebo velikosti písma.
+
+\subsubsection{Vytváøení u¾ivatelských rozhraní pomocí externího XML dokumentu}
+
+Programátor mù¾e tvoøit u¾ivatelské rozhraní dvìma zpùsoby. Buïto voláním konstruktorù pøí\-slu\-¹ných komponent nebo naètením externího XML dokumentu. Vytváøení u¾ivatelských rozhraní v~externím dokumentu v~deklarativním jazyce má pøedev¹ím tyto výhody.
+
+\begin{itemize}
+\item Oddìlení prezentace od logiky aplikace -- Programátor se nemusí potápìt hluboko v~kódu aplikace, aby zmìnil polohu dvou tlaèítek. 
+\item Zmìny u¾ivatelského rozhraní mù¾e snadno provádìt i~neprogramátor. 
+\item Snadná lokalizace -- Staèí vytvoøit pro ka¾dý jazyk jiný dokument.
+\item Deklarativní programování se zdá pøirozenìj¹í pro popis u¾ivatelských rozhraní. 
+\item Nabízí se mo¾nost pou¾ití externích klikacích nástrojù, které zjednodu¹í návrh a~implementaci u¾ivatelských rozhraní. 
+\end{itemize}
+
+Formát XML dokumentu pro popis u¾ivatelského rozhraní bude následucící:
+ 
+\begin{enumerate}
+\item Koøenový element má název \verb|ui|.
+\item Elementy odpovídají názvem konstruktoru konkrétního prvku nezávislého u¾ivatelského rozhraní.
+\item Atributy elementù odpovídají parametrùm konstruktoru.
+\item Speciální atribut \verb|id| umo¾ní jednoznaèné pojmenování objektu tak, aby se na nìj mohlo z~programu odkazovat.
+\end{enumerate}
+
+Zde je ukázka popisu vý¹e uvedeného formuláøe. 
+
+\begin{verbatim}
+<ui>
+    <Grid rows=`2' cols=`2'>
+        <StaticText text=`Name'/>
+        <LineEdit id=`edit_name' text=`Random F. Flyer'/>
+        <StaticText text=`Email'/>
+        <LineEdit id=`edit_email' text=`dent@milliways.gal'/>
+    </Grid>
+</ui>
+\end{verbatim}
+
+\subsection{Práce s databází}
+
+Knihovna by nemìla mít ¾ádné zvlá¹tní po¾adavky na práci s databází. Spolupráce s databází
+je potøeba jen pøi zobrazování tabulek a pro tyto úèely poslou¾í univerzální tøída \verb|Cursor|.
+
+Pøímé propojení databáze s ovládacími prvky je mo¾né implementovat jako nadstavbu nad touto knihovnou a není úèelem této práce.
+
+\chapter{Implementace}
+
+Implementace byla rozdìlena do nìkolika modulù. Pøedev¹ím jde o rozdìlení 
+knihovny na back-end a jednotlivé front-endy. Moduly jsou spojeny v jmenném prostoru \verb|disp| (odvozeno ze zkratky anglického názvu tohoto projektu Development of Information Systems in Python).
+
+% \emph{Jak je udìláno to, ¾e stejný kód spustím beze zmìny na více front-endech?}
+
+Ka¾dý front-end se skládá ze dvou èástí. Kromì vlastních tøíd implementujících jednotlivé komponenty
+u¾ivatelského rozhraní to je je¹tì \emph{spou¹tìè}. Jeho úkolem je pøipravit prostøedí pro to, aby
+volání kontruktorù prvkù nezávislého u¾ivatelského rozhraní (NUI) se pøevádìlo na konkrétní konstruktory front-endu.
+
+Podle návrhu by se pro tento úèel mìla vytvoøit abstraktní továrna, ze které se budou vytváøet instance tøíd NUI. Taková konstrukce je v¹ak v dynamických jazycích jako je Python zbyteèná. Abstraktní továrnou mù¾e být samotný modul, do kterého se dynamicky pøesunou konstruktory jednotlivých komponent.
+
+Typická èinnost spou¹tìèe se tak dá popsat ve dvou krocích:
+
+\begin{enumerate}
+\item Importuje modul front-endu -- Do jmenného prostoru \verb|disp| importuje 
+moduly konkrétního front-endu. 
+
+Napøíklad webový front-end importuje konstruktor ButtonWeb jako disp.form.Button, co¾ nahrazuje vytvoøení abstraktní továrny a její hypotetickou metodu CreateButton.
+
+\item Vytvoøí instanci hlavní tøídy aplikace. Ta je definovaná programátorem a obvykle je odvozena od tøídy disp.application.Application. V této chvíli u¾ je tedy aplikace navázána na konkrétní front-end. Pokud front-end umo¾nuje ulo¾ení stavu aplikace, tak v této chvíli naète pøedchozí stav aplikace a stav obnoví.
+\end{enumerate}
+
+Vytvoøení spou¹tìèe je závislé na konkrétním front-endu a na aplikaci. Pøinejmen¹ím se musí spou¹tìè dozvìdìt o tom, jak se jmenuje a~ve kterém modulu se nachází tøída, která bude hlavní tøídou aplikace. 
+% \emph{Asi to bude chtít obrázek}
+
+% Samotná aplikace vytvoøená programátorem nemá ¾ádný vstupní bod. 
+
+
+\section{Webový front-end}
+
+Webový front-end umo¾òuje pøistupovat k aplikaci pomocí libovolného webového prohlí¾eèe. Je postaven nad HTTP serverem Apache a jeho modulem mod\_python.
+
+Pøi pou¾ití webového front-endu je potøeba vytvoøit spou¹tìè a zkopírovat jej do adresáøe, ze kterého jej bude spou¹tìt webový server. Pak u¾ jen zbývá nakonfigurovat Apache a modul mod\_python, aby pou¾íval vytvoøený spou¹tìè. 
+
+% Adresáø na webovém serveru pak bude vypadat zhruba takto:
+% 
+% \begin{verbatim}
+% /var/www/aplikace/
+%     .htacess
+%     index.py
+%     main.py
+%     style.css
+% \end{verbatim}
+% 
+% Zdrojový kód aplikace se nachází v modulu main.py a pøedpokládejme, ¾e obsahuje tøídu Main. Soubor index.py je spou¹tìè, jeho¾ obsah bude vypadat následnovnì:
+% 
+
+
+\subsection{Serializace a ulo¾ení stavu aplikace}
+
+%Problémem ulo¾ení stavu aplikace se musí zabývat ka¾dá netriviální webová aplikace. 
+
+% Webová aplikace mù¾e najednou obsluhovat velké mno¾ství klientù.
+
+Pøi pou¾ití webového front-endu je potøeba ulo¾it stav aplikace mezi dvìma HTTP po¾adavky.
+
+Stav aplikace je reprezentován stromem objektù odvozených od tøídy \verb|PObject|. Tento stav je potøeba pøevést do podoby, kterou je mo¾no ulo¾it, tedy nejlépe do øetìzce. Procesu pøevedení objektù do øetìzce se øíká \emph{serializace}.
+
+\subsubsection{Mo¾nosti ulo¾ení stavu aplikace}
+
+Nabízí se více mo¾ností jak a kam ulo¾it stav aplikace. 
+
+\begin{itemize}
+
+\item Ulo¾ení v procesu na serveru -- Stav aplikace je uchován pøímo v pamìti procesu na serveru.
+
+Výhoda této mo¾nosti spoèívá v tom, ¾e není tøeba nic serializovat. Objekty mohou existovat v pamìti tak, jak byly vytvoøeny. Tato mo¾nost v¹ak lze pou¾ít pouze v~pøípadì, ¾e mù¾eme zaruèit, ¾e stejný po¾adavek klienta bude obslou¾en v¾dy tímté¾ procesem. Prakticky to má cenu jen v~pøípadì, ¾e nám staèí jediný proces s~více vlákny. Takové uspoøádání se v¹ak nedá roz¹iøovat na shluk serverù.
+
+\item Ulo¾ení u klienta -- Serializovaný stav aplikace se pøenese klientovi.
+Ten pak tuto informaci opìt ode¹le serveru pøi ka¾dém svém dal¹ím po¾adavku.
+
+Pøi této mo¾nosti mù¾e server pracovat bezestavovì. Nemusí se zatì¾ovat ukládáním stavových informací a~mù¾e tak obsluhovat více po¾adavkù. Na druhou stranu se v¹ak zbyteènì zvý¹í mno¾ství pøená¹ených dat. Dal¹í nevýhodou je bezpeènost -- data od klienta jsou z~principu nedùvìryhodná a~musela by být peèlivì kontrolována.
+
+\item Ulo¾ení v~databázi na serveru -- Serializovaný stav aplikace se ulo¾í do úlo¾i¹tì na stranì serveru, pod urèitým klíèem. Tento klíè se po¹le klientovi. Klient pak odesílá klíè s~ka¾dým svým dal¹ím po¾adavkem v relaci.
+
+\end{itemize}
+
+Pro implementaci jsem se rozhodl vyu¾ít mo¾nost ulo¾ení stavu v úlo¾i¹ti na serveru, které
+poskytuje modul mod\_python.Session. To je obvykle databáze v souboru na serveru. Do tohoto úlo¾i¹tì vkládám serializovaný stav aplikace.
+Identifikátor relace je pak klientovi poslán pro\-støe\-dni\-c\-tvím \emph{cookie}. 
+
+Pro samotnou serializaci lze pou¾ít knihovnu \verb|Pickle|, která je souèástí standardní knihovny jazyka Python. 
+
+\subsubsection{Optimalizace nemìnných objektù}
+
+Serializovaný øetìzec, který vyprodukuje knihovna Pickle je zbyteènì velký. Mnoho dat o objektech se ukládá zbyteènì, proto¾e to jsou data, která se dají získat jinou cestou. Mezi zbyteènì serializovaná data patøí zejména
+
+\begin{enumerate}
+\item Atributy tøídy PObject, jako jsou odkazy na rodièe, tabulka odkazù na dìti a název. Tyto informace lze rekonstruovat ze samotných identifikátorù. 
+\item Informace o objektech, které svùj stav nijak nezmìnily od vytvoøení aplikace. Za pøedpokladu, ¾e inicializaèní procedura bude pracovat v¾dy deterministicky, lze rekonstruovat objekt jen tím, ¾e se znovu zavolá inicializaèní procedura.
+\item Atributy objektù, které nemá cenu uchovávat. Toto je závislé na konkrétních objektech, proto¾e jen ony sami vìdí, které atributy potøebují a které ne.
+\end{enumerate}
+
+Proto samotnou serializaci prostøednictvím knihovny Pickle nejprve upravuji.
+
+\begin{enumerate}
+\item Atributy tøídy PObject, které se dají zrekonstruovat jen ze známých identifikátorù, budou pøed serializací odstranìny. Pøi deserializaci jsou pak zrekonstruovány na základì identifikátorù.
+\item Ka¾dý objekt tøídy PObject získává navíc atribut \verb|dirty|. Serializovány jsou pak jen objekty, které mají atribut \verb|dirty| nastaveny na pravdivou hodnotu. 
+
+Nevýhoda tohoto pøístupu spoèívá v tom, ¾e objekty si musí samy hlídat svùj stav, co¾ mù¾e vést k tì¾ce vyhledávatelným chybám. Pokud se objekt nechce úèastnit této optimalizace, mù¾e nastavit svùj atribut \verb|dirty| na pravdivou hodnotu ji¾ v konstruktoru. Takový objekt se pak bude serializovat v¾dy.
+\item Implicitnì se serializují v¹echny atributy objektu. Pokud v¹ak objekt implementuje metodu \verb|_getstate|, serializuje se návratová hodnota této metody. Objekt tak má mo¾nost ulo¾it jen to, co pova¾uje za nutné.
+\end{enumerate}
+
+\subsection{Vykreslení komponent}
+
+Ka¾dá tøída reprezentující komponentu webového front-endu musí obsahovat metodu
+\verb|web_out|. Ta má jediný argument a tím je kontext. Metoda vrací øetìzec obsahující kus HTML kódu odpovídajícímu zobrazené komponentì.
+
+V kontextu se pøedávají informace, které komponenta potøebuje vìdìt, aby se mohla správnì zobrazit.
+Prakticky jedinou takovou informací je URL adresa aplikace na serveru, která je potøeba pro
+vytváøení hypertextových odkazù.
+
+Kontejnery (komponenty obsahující jiné komponenty) pak rekurzivnì volají metodu \verb|web_out| u v¹ech svých potomkù. Koneèným výsledkem je pak HTML stránka, která se ode¹le klientovi.
+
+Programátor má mo¾nost ovlivnit výsledný vzhled takovéto webové aplikace úpravou kas\-ká\-do\-vých stylù. Implicitnì je pou¾it soubor style.css. Tento mù¾e programátor pøepsat
+jakýmkoli jiným souborem v jazyce CSS. Ka¾dá komponenta je zobrazována s~vlastní CSS tøídou (atribut \emph{class} v~elementech jazyka HTML), co¾ umo¾òuje velkou míru kontroly nad stylem aplikace.
+
+Pøi tvorbì nezávislých informaèních systémù by se v¹ak programátor nemìl zabývat vzhledem aplikace vùbec.
+
+\subsection{Zpracování vstupù}
+
+Vstup mù¾e nastat ve dvou pøípadech.
+
+\begin{enumerate}
+\item Odesláním webového formuláøe (aktivováním formuláøového prvku \emph{submit} v HTML dokumentu)
+\item Kliknutím na hypertextový odkaz.
+\end{enumerate}
+
+Z omezení daným jazykem HTML plyne, ¾e pøi pøechodu na jinou stránku pøes hypertextový odkaz webový prohlí¾eè nemá jak odeslat novì vyplnìná data z formuláøù. U¾ivatel tedy musí vyplnìný formuláø odeslat kliknutím na nìjaké tlaèítko (formuláøový prvek \emph{submit}). Toto omezení by ¹lo obejít pomocí skriptování v jazyce ECMAScript, co¾ by ale bylo v rozporu s po¾adavky.
+
+Ka¾dá komponenta má svùj jednoznaèný identifikátor (viz~\ref{reprezentace_stavu}), který pou¾ije i pro jednoznaènou identifikaci v~zobrazeném HTML dokumentu. Vstupy z~HTML formuláøù se na server dostanou jako dvojice \emph{identifikátor} --- \emph{hodnota}, kde hodnota mù¾e být napøíklad vyplnìný text v~editaèním poli. Pøi zpracování vstupu se musí vyhledat k identifikátoru odpovídající komponenta. K tomu staèí projít strom objektù od koøene podle jednotlivých jmen z~identifikátoru. Vyhledanému objektu se pak zavolá metoda \verb|web_in|, které se pøedá hodnota.
+
+Obecnì mù¾e jedna komponenta vytvoøit více HTML prvkù, které se mohou pou¾ít jako vstup. Takové prvky tedy v~dokumentu musí oznaèit identifikátorem slo¾eným ze svého identifikátoru a~nìjakého øetìzce, který se jistì nevyskytne jako název nìjakého potomka. 
+
+\section{XUL front-end}
+\subsection{Co je to XUL}
+
+XML User Interface Language (XUL) je jazyk pro popis u¾ivatelského rozhraní. Je pou¾íván 
+pøedev¹ím programy pocházejících z balíku internetových programù Mozilla (viz~\cite{mozilla}).
+
+Jazyk XUL není otevøeným standardem, ale je podporován roz¹íøeným webovým prohlí¾eèem Firefox. Pokud takový prohlí¾eè narazí na dokument v jazyku XUL, tak zobrazí okno s~prvky u¾ivatelského rozhraní popsaném v~takovém dokumentu. Chování aplikace se pak dá programovat v~jazyce ECMAScript. 
+
+XUL front-end je tedy implementován ve dvou èástech. Klientská èást je implementována v~jazyku ECMAScript a~je spu¹tìna u klienta. Skript pak dynamicky vytváøí prvky jazyka XUL a~komunikuje se serverem posíláním HTTP po¾adavkù za pou¾ití objektu \verb|XMLHTTPRequest|. Komponenty na serverové èást pak pracují jako proxy, komunikují s~klientskými komponentami pomocí zpráv. 
+
+Serverová èást front-endu je obdobná jako u~webového front-endu a~vyu¾ívá se zde stejný princip serializace.
+
+\subsection{Komunikaèní protokol mezi klientem a serverem}
+
+%Nejprve bylo potøeba definovat protokol, kterým bude klientská a serverová èást komunikovat. 
+Nejprve bylo tøeba rozhodnout, na jaké úrovni bude klientská strana pracovat. V~úvahu pøicházely dvì mo¾nosti, jak jsou naznaèeny na obrázku~\ref{obr_xul1}.
+
+\begin{figure}[t]
+\centering
+\subfigure[Úroveò XUL]{
+	\includegraphics[width=6cm]{xul1}
+}
+\subfigure[Úroveò NUI]{
+	\includegraphics[width=6cm]{xul2}
+}
+\caption{Dvì mo¾né úrovnì protokolu.}
+\label{obr_xul1}
+\end{figure}
+
+\begin{enumerate}
+\item Úroveò XUL. XUL klient by nemìl ponìtí o~komponentách nezávislého u¾ivatelského rozhraní, pouze by zobrazovat daný XUL dokument. Komunikaèní protokol by se pak týkal zmìn v tomto dokumentu. 
+
+Klientská strana tak bude jednodu¹¹í, ov¹em bude se muset pøená¹et vìt¹í mno¾ství dat.
+\item Úroveò nezávislého u¾ivatelského rozhraní. XUL klient bude vìdìt o~objektech NUI a~sám si bude na základì nich vytváøet XUL dokument. Komunikaèní protokol se pak bude týkat vytváøení objektù NUI, pøedávání atributù a~volání metod.
+
+Pøi tomto øe¹ení bude spoèívat velké mno¾ství práce na klientské stranì. Po síti se pøená¹í jen minimum dat, proto¾e se jedná o~nejabstraktnìj¹í úroveò. Server nemusí mít o~jazyku XUL ani ponìtí. 
+
+\end{enumerate}
+
+
+
+Rozhodl jsem se implementovat druhou mo¾nost, co¾ znamenalo implementaci komponent na klientské stranì v~jazyce ECMAScript.
+
+Komunikaèní protokol mezi klientskými a serverovými komponentami jsem zalo¾il na formátu JSON~\cite{json} (Java Script Object Notation). Jeho výhoda je jeho jednoduchost a~dostupné a~rychlé knihovny pro práci s~ním v~Pythonu i v~jazyce ECMAScript. Zprávy v tomto formátu (viz tabulka~\ref{tabulka_xul_messages}) se pak pøená¹ejí protokolem HTTP. V souèasné implementaci mù¾e server posílat zprávy klientovi pouze jako souèást HTTP odpovìdi. Komunikaci tedy v¾dy musí iniciovat klient.
+
+
+
+\begin{table}
+\begin{center}
+  \begin{tabular}{|l|p{10cm}|}
+    \hline
+	\multicolumn{2}{|c|}{Zprávy od serveru klientovi} \\
+	\hline \hline
+	create	&	Vyvtoøení objektu. Argumenty této zprávy jsou tøída objektu, který se má
+	vytvoøit a identifikátor objektu. \\
+	\hline
+	call 	&	Zavolání metody klientského objektu. Má tøi argumenty. Identifikátor objektu, název metody a argumenty metody. \\
+	\hline
+	alert	&	Zobrazení chybové hlá¹ky. Má jediný argument a to text hlá¹ky. \\
+	\hline \hline
+	
+	\multicolumn{2}{|c|}{Zprávy od klienta serveru} \\
+	\hline \hline
+	init 	&	První zpráva. Oznamuje spu¹tìní aplikace u klienta. Server by mìl odpovìdìt zprávami create, kterými informuje klienta o tom, co má zobrazit. \\ \hline
+	call	&	Volání metody serverového objektu. Má tøi argumenty. Identifikátor objektu, název metody a argumenty metody. \\
+	\hline
+	state 	&	Oznámení o stavu objektu na klientské stranì. Napøíklad mù¾e obsahovat nový text editaèních polí nebo stav za¹krtávacích tlaèítek. Má dva argumenty. Identifikátor objektu a stav. \\
+	\hline
+  \end{tabular}
+  \caption{Typy zpráv mexi XUL klientem a serverem}
+  \label{tabulka_xul_messages}
+\end{center}
+\end{table}
+
+\begin{figure}
+\centering
+\includegraphics[width=11cm]{xul_sekvence}
+\caption{Sekvence posílání pøíkazù mezi klientem a serverem.}
+\label{obr_xul_sekvence}
+\end{figure}
+
+Na obrázku~\ref{obr_xul_sekvence} je ukázán pøíklad takové komunikace. Nejprve server naète XUL dokument. Ten je pro ka¾dou aplikaci stejný a slou¾í pro naètení klientské èásti front-endu vytvoøené v jazyce ECMAScript. Po naètení této stránky pak klientská èást po¹le serveru zprávu \verb|init|. Server inicializuje aplikaci a ke ka¾dé komponentì u¾ivatelského rozhraní, kterou aplikace vytvoøí, po¹le klientovi zprávu \verb|create|. 
+
+Pøi nìjaké u¾ivatelské akci, napøíklad pøi stisku tlaèítka, je potøeba pøedat øízení aplikaci na serveru. Ve¹keré zmìny v komponentách provedené u¾ivatelem se po¹lou na server pomocí zpráv \verb|state|, pøípadnì \verb|call|. Pokud obsluha události v aplikaci na serveru upraví stav nìjaké komponenty u¾ivatelského rozhraní, po¹le tuto informaci opìt klientovi v odpovìdi jako zprávy typu \verb|call|.
+
+\newpage
+
+\section{GTK front-end}
+
+Knihovna GTK je knihovna pro tvorbu u¾ivatelských rozhraní, pùvodnì vytvoøena pro program GIMP. Od toho tedy její název GIMP ToolKit. V souèasnosti je to jedna ze dvou nejpou¾ívanìj¹ích knihoven pro tvorbu grafických u¾ivatelských rozhraní pracujících na X Window System. V~tomto projektu vyu¾ívám knihovnu PyGTK 2.0, co¾ je obálka nad knihovnou GTK pro jazyk Python (viz~\cite{pygtk}).
+
+GTK front-end se skládá z~tøíd implmentujících jednotlivé prvky nezávislého u¾ivatelského rozhraní.
+Ka¾dá taková tøída pak funguje jako obálka nad objekty knihovny GTK, jak ukazuje tabulka~\ref{tabulka_component_gtk}.
+
+\begin{table}[h]
+\begin{center}
+  \begin{tabular}{|l|l|}
+  \hline
+  Komponenta &	Prvek GTK	\\
+  \hline \hline
+  Table		&	gtk.TreeView \\ \hline
+  Button	&	gtk.Button \\ \hline
+  LineEdit	&	gtk.Entry \\ \hline
+  StaticText &	gtk.Label \\ \hline
+  TabBox	& 	gtk.Notebook \\ \hline
+  CheckBox	&	gtk.CheckButton \\ \hline
+  \end{tabular}
+  \caption{Mapování komponent nezávislého u¾ivatelského rozhraní na prvky knihovny GTK.}
+  \label{tabulka_component_gtk}
+\end{center}
+\end{table}
+
+Proto¾e knihovna GTK byla jedním ze vzorù nezávislého u¾ivatelského rozhraní, je implementace GTK front-endu relativnì jednoduchá.
+
+\newpage
+
+\section{Integrace s knihovnou SQLObject}
+
+SQLObject~\cite{sqlobject} je knihovna pro objektovì relaèní mapování pro jazyk Python. Umo¾òuje pohodlnou práci s SQL databází. Tabulky v SQL databázi jsou reprezentovány tøídami, øádky jejich instancemi a sloupce jejich atributy. S databází se tak pracuje jako s~objektovou databází. Knihovna SQLObject navíc abstrahuje
+od konkrétních detailù jednotlivých SQL databází, tak¾e umo¾òuje vytváøet systémy
+nezávislé na konkrétní pou¾ité databázi. Podporuje vìt¹inu roz¹íøených databázových sys\-té\-mù, jako jsou MySQL, PostgreSQL, SQLite nebo Firebird.
+
+Souèasné frameworky, jako jsou TurboGears nebo Ruby on Rails pou¾ívají objektovì relaèní mapování pøedev¹ím proto, ¾e umo¾òují rychlý vývoj aplikací. 
+
+Pro integraci SQLObject s~knihovnou disp bylo potøeba zejména implementovat rozhraní Cursor pro pohodlné zobrazování dotazù v tabulkách. Toto implementuje tøída SOCursor. Je to adaptér nad existujícím kurzorem knihovny SQLObject, který má ve¹kerou potøebnou funkènost.
+
+V nìkterých pøípadech se mù¾e vyskytnout potøeba vytváøet spojení s databází dynamicky. Takové spojení by se mìlo umìt zachovávat v prùbìhu celé u¾ivatelské relace. Tuto funkci implementuje tøída SOConnection. Je to SessionWrapper nad objektem spojení knihovny SQLObject, tak¾e se spojení vytvoøí znovu pøi ka¾dé deserializaci automaticky. Tøída SOClass pak mù¾e reprezentovat pøímo jednu tabulku.
+
+Programátor tedy mù¾e v prùbehu bìhu aplikace vytvoøit objekty reprezentující spojení s~databází nebo pøímo s~tabulkou databáze. Objekty samy zajistí pøipojování k databázi v~prùbìhu celé relace.
+
+\chapter{Závìr}
+
+Výsledkem projektu je pou¾itelná knihovna, se kterou se dají vytváøet jednoduché nezávislé informaèní systémy. Knihovna obsahuje prozatím pomìrnì chudou mno¾inu komponent, ov¹em architektura umo¾òuje snadno vytváøet dal¹í. Z funkcí, které by knihovna mìla dále poskytovat bych uvedl je¹tì autorizaci u¾ivatelù, která není øe¹ena a pøípadný programátor aplikace by ji musel øe¹it na aplikaèní úrovni.
+
+Pou¾ití tøí rùzných front-endù si vy¾ádalo velkou míru abstrakce u¾ivatelského rozhraní, co¾ na jednu stranu je výhodné, proto¾e to zjednodu¹uje tvorbu aplikace, ov¹em na druhou stranu to znemo¾òuje kontrolu nad detaily. Z toho dùvodu by pro pokraèování projektu mohlo být vhodné zamìøit se na jednu technologii a tu maximálnì vyu¾ít. Nabízí se jazyk XUL, nebo» ten sám o sobì se dá pova¾ovat za nezávislý -- dá se pou¾ít jako webová aplikace v prohlí¾eèích Mozilla nebo jako desktopová aplikace pomocí knihovny XULRunner~\cite{xulrunner}. 
+
+Dá se oèekávat, ¾e budoucí technologie bude nadále smazávat rozdíly mezi desktopovými a~webovými aplikacemi.
+
+% \begin{itemize}
+% \item Pomìrnì chudá mno¾ina ovládacích prvkù -- Mno¾ina komponent nezávislého u¾ivatelského rozhraní nepokrývá v¹echny bì¾nì pou¾ívané komponenty, jako jsou seznamy, stromové pohledy, aplikaèní menu, a podobnì. Architektura knihovny je v¹ak navr¾ena tak, aby bylo snadné vytváøet nové komponenty. 
+% 
+% Pro skuteènì nezávislé komponenty je potøeba vytvoøit jejich implementaci ve v¹ech front-endech, co¾ je pracné. Ov¹em tvùrce aplikace, kterému nejde o nezávislot se mù¾e zamìøit jen na jeden front-end a vytvoøit napøíklad mno¾inu komponent specifických pro webové aplikace.
+% 
+% \item Optimalizace -- Pøi implementaci nebylo hledìno na rychlost celé knihovny. Bylo by potøeba provést výkonostní profil celé aplikace, ukázat úzká místa a optimalizovat je. 
+% 
+% \item Chybí autorizace u¾ivatelù -- Knihovna neøe¹í øízení pøístupu k aplikaci. Toto je tì¾ké navrhnout pro nezávislou aplikaci, proto¾e podmínky jsou naprosto rozdílné pøi pou¾ití webové nebo desktopové aplikace. Pøi pou¾ití webového front-endu je tak potøeba øe¹it autorizaci u¾ivatelù zvlá¹», napøíklad na úrovni konfigurace HTTP serveru Apache a souborù .htaccess.
+% \end{itemize}
+
+
+% \section{Srovnání s podobnými projekty}
+% \section{Mo¾ná pokraèování projektu}
+
+\appendix
+
+\chapter{Ukázková aplikace}
+
+Ukázková aplikace bude jednoduchý adresáø. Pro ulo¾ení dat pou¾ijeme MySQL databázi pro\-støe\-dni\-ctvím knihovny SQLObject.
+
+\section {Kód aplikace}
+
+Nejprve vytvoøíme modul s databází. Bude pro zaèátek tvoøen jedinou tabulkou, ve které bude obsa¾eno jméno, pøíjmení a e-mailová adresa. Vyu¾ijeme k~tomu pohodlí poskytované knihovnou SQLObject.
+
+\lstset{language=Python, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, upquote=true,frame=lr}
+\begin{lstlisting}[frame=tlr]
+# Soubor dbschema.py:
+
+from sqlobject import *
+
+sqlhub.processConnection = connectionForURI(
+  'mysql://user:password@127.0.0.1/db')
+
+\end{lstlisting}
+
+Budeme udr¾ovat jediné spojení pro celou aplikaci. Pøedpokládá se, ¾e na lokálním stroji bì¾í MySQL a na nìm máme databázi `db' a k ní úèet `user' s heslem `password'.
+
+Definujeme tabulku oznaèující osobu:
+
+\begin{lstlisting}[firstnumber=8,frame=lrb]
+class Person(SQLObject):
+  firstname = StringCol()
+  lastname = StringCol()
+  email = StringCol()
+
+if __name__ == '__main__':
+  Person.createTable()
+\end{lstlisting}
+
+Tento modul slou¾í zároveò k vytvoøení databáze a zároveò k pøístupu k ní. Pro vytvoøení tabulek staèí spustit tento skript interpretem Pythonu.
+
+\begin{verbatim}
+$ python dbschema.py
+\end{verbatim}
+
+Pokud se podaøilo pøipojit k databázi, tak v této chvíli je v ní vytvoøena tabulka \emph{person}.
+
+Nyní navrhneme podobu u¾ivatelského rozhraní. Bude obsahovat tabulku s kontakty, formuláø pro zadání údajù a filtr pro vyhledání kontaktù podle jména.
+
+\newpage
+
+Soubor form.xml:
+\lstset{language=XML, numbers=none}
+\begin{lstlisting}[frame=tlrb]
+<ui>
+  <HPane>
+    <VBox>
+      <Grid rows="1" cols="3">
+        <StaticText text="Filter: "/>
+        <LineEdit id="edit_filter" size="40"/>
+        <Button text="Filter">
+          <handler event="clicked" handler="onFilter"/>
+        </Button>
+      </Grid>
+      <Table id="table" rows="20">
+        <TableColumn column="firstname" label="First Name" />
+        <TableColumn column="lastname" label="Last Name" />
+        <TableColumn column="email" label="E-mail" />
+        <handler event="lineSelected" handler="onPersonSelected"/>
+      </Table>
+    </VBox>
+    <VBox>
+      <FrameBox label="Details">
+        <Grid rows="4" cols="2">
+          <StaticText text="First name"/>
+          <LineEdit id="edit_firstname" />
+          <StaticText text="Last name"/>
+          <LineEdit id="edit_lastname" />
+          <StaticText text="E-mail"/>
+          <LineEdit id="edit_email" size="40" />
+        </Grid>
+      </FrameBox>
+      <HButtonBox>
+        <Button text="Update">
+          <handler event="clicked" handler="onUpdate"/>
+        </Button>
+        <Button text="New">
+          <handler event="clicked" handler="onNew"/>
+        </Button>
+        <Button text="Delete">
+          <handler event="clicked" handler="onDelete"/>
+        </Button>
+        <Button text="Export">
+          <handler event="clicked" handler="onExport"/>
+        </Button>
+      </HButtonBox>
+    </VBox>
+  </HPane>
+</ui>
+\end{lstlisting}
+
+Výsledkem by mìlo být okno rozdìlené na dvì èásti (HPane). V levé èásti bude tabulka a filtr, v pravé pak formuláø pro zadání údajù a rámeèek s tlaèítky. 
+
+Elementy \emph{handler} oznaèují obsluhy událostí, které bude potøeba naprogramovat ve zdrojovém kódu aplikace.
+
+Následuje zdrojový kód aplikace:
+\lstset{language=Python, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+\begin{lstlisting}[firstnumber=1,frame=lrt]
+# Soubor main.py:
+
+from disp.application import *
+from disp.form import *
+from disp.db import *
+from disp.cursor import *
+from disp.xmlui import *
+from disp.file import *
+from dbschema import *
+
+class Main (Application):
+  def initialize (self):
+    form = Form (self)
+
+    uiloader = XMLUIBuilder ()
+    uiloader.loadFile ('form.xml', self, form)
+
+\end{lstlisting}
+
+Vytvoøíme formuláø a do nìj naèteme u¾ivatelské rozhraní z XML souboru. Metoda loadFile má tøi argumenty.
+
+\begin{enumerate}
+\item Jméno souboru, ze kterého se má naèíst popis u¾ivatelského rozhraní
+\item Objekt, do kterého se ulo¾í odkazy na objekty uvedené pomocí atributu \emph{id} a který bude obsahovat metody obsluh událostí uvedné v elementech \emph{handler}.
+\item Koøen, do kterého se mají vkládat komponenty naètené z XML souboru. Obvykle to bývá nìjaký formuláø.
+\end{enumerate}
+
+\begin{lstlisting}[firstnumber=18]
+    self.table.cursor = SOCursor (Person, orderBy = 'lastname')
+
+\end{lstlisting}
+
+Nastavíme kurzor na kurzor pro ètení z SQLObject-ových tabulek. První argument udává tabulku a dal¹í argumenty parametry SQL pøíkazu SELECT. V tomto pøípadì pouze specifikujeme øazení.
+
+\begin{lstlisting}[firstnumber=20]
+    # Aktuálnì zvolená osoba v tabulce.
+    self.person_id = None
+
+    self.file_output = FileOutput (self,
+      func = self.export,
+      content_type = 'text/xml',
+      filename = 'output.xml')
+
+\end{lstlisting}
+
+Tøída FileOutput slou¾í k zápisu dat do souboru ulo¾eného u klienta. Musí se specifikovat funkce, která provede zápis a typ souboru (ten je vyu¾íván jen webovým front-endem a mìl by být nastaven na MIME typ výsledného souboru). Argument \emph{filename} je volitelný a specifikuje implicitní jméno souboru.
+
+\begin{lstlisting}[firstnumber=28]
+    form.open ()
+
+  def onUpdate (self):
+    if self.person_id:
+      person = Person.get (self.person_id)
+      person.set (
+        firstname = self.edit_firstname.text,
+        lastname = self.edit_lastname.text,
+        email = self.edit_email.text)
+      self.table.update ()
+
+\end{lstlisting}
+
+Metoda onUpdate je obsuha události na stisknutí tlaèítka Update. Jeho funkcí je aktualizovat údaje o vybrané osobì podle nových dat z formuláøe. Zde vyu¾ijeme schopnosti knihovny SQLObject pracovat s daty v SQL databázi jako s objekty. 
+
+Atribut \emph{text} je atribut tøíd LineEdit a vrací obsah editaèního boxu. Nakonec je potøeba sdìlit tabulce, ¾e má znovu naèíst data, proto¾e byla zmìnìna. To se provede metodou \emph{update}.
+
+Obsluhy událostí New a Delete jsou obdobné.
+
+\begin{lstlisting}[firstnumber=40]
+  def onNew (self):
+    person = Person (
+      firstname = self.edit_firstname.text,
+      lastname = self.edit_lastname.text,
+      email = self.edit_email.text)
+
+    self.person_id = person.id
+    self.table.update ()
+
+  def onDelete (self):
+    if self.person_id:
+      Person.delete (self.person_id)
+      self.table.update ()
+
+  def onPersonSelected (self, person):
+    self.edit_firstname.text = person.firstname
+    self.edit_lastname.text = person.lastname
+    self.edit_email.text = person.email
+
+    self.person_id = person.id
+
+  def onExport (self):
+    self.file_output.open ()
+
+  def export (self, stream):
+    stream.write('<people>')
+    self.table.cursor.begin ()
+    for person in self.table.cursor:
+      stream.write('<person>')
+      stream.write('<firstname>%s</firstname>' % person.firstname)
+      stream.write('<lastname>%s</lastname>' % person.lastname)
+      stream.write('<email>%s</email>' % person.email)
+      stream.write('</person>')
+    self.table.cursor.end ()
+
+    stream.write('</people>')
+
+\end{lstlisting}
+
+Metoda export implementuje zápis do souboru. Zapí¹e informace o v¹ech osobách, které zrovna tabulka zobrazuje prostøednictvím tabulkového kurzoru. Kurzor implementuje i metodu \_\_iter\_\_, tak¾e umo¾òuje i jednoduchý prùchod v¹ech prvkù obyèejnou konstrukcí \emph{for}.
+
+V tomto jednoduchém pøíkladì neøe¹íme speciální znaky a kódování znakù.
+
+\begin{lstlisting}[firstnumber=78, frame=lrb]
+  def onFilter (self):
+    filtr = self.edit_filter.text
+    if filtr == '':
+      self.table.cursor = SOCursor (Person, orderBy = 'lastname')
+    else:
+      self.table.cursor = SOCursor (Person, orderBy = 'lastname',
+        clause = OR(
+          LIKE(Person.q.lastname, filtr),
+          LIKE(Person.q.firstname, filtr)))
+    self.table.update ()
+\end{lstlisting}
+
+\section{Nasazení aplikace}
+
+Pokud máme funkèní databázi a nastavený server Apache s modulem mod\_python, mù¾eme vystavit na¹i aplikaci jako webovou aplikaci.
+
+Vytvoøíme adresáø \verb|/var/www/aplikace/web/| a zkopírujeme tam zdrojové soubory. Dále tam vlo¾íme obsah adresáøe \verb|deploy/web/| z adresáøe projektu.
+
+Tyto soubory upravíme následnovnì:
+
+Soubor .htaccess:
+
+\begin{lstlisting}[frame=tlrb]
+AddHandler mod_python .py
+PythonDebug On
+PythonHandler index
+PythonInterpPerDirectory On
+\end{lstlisting}
+
+Udává, ¾e soubory s pøíponou py bude zpracovávat modul \verb|index.py|. Ten bude vypadat ná\-sle\-do\-vnì:
+
+\begin{lstlisting}[frame=tlrb]
+import disp.web
+import disp.web.launcher
+
+import main
+
+def handler(req):
+  return disp.web.launcher.launch (
+    req,
+    main.Main,
+    "./index.py",
+    "/var/www/aplikace/web/")
+
+\end{lstlisting}
+
+Inicializuje spou¹tìè a pøedá mu øízení. Musí mu zde pøedat hlavní tøídu aplikace (to je námi vytvoøen modul main a jeho tøída Main. Dále pak je to URL adresa dokumentu, jak jej má popisovat ve vygenerovaných HTML stránkách. Posledním argumentem je cesta k lokálním souborùm (jako je napøíklad ná¹ XML soubor s popisem u¾ivatelského rozhraní).
+
+Pokud ¹lo v¹e dobøe, tak bychom mìli dostat funkèní webovou aplikaci.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{screenshot1.png}
+\caption{Výsledná webová aplikace}
+\label{screenshot1}
+\end{figure}
+
+Front-end XUL se instaluje obdobnì. Do adresáøe \verb|/var/www/aplikace/xul/| staèí zkopírovat soubory aplikace a obsah adresáøe \verb|deploy/xul/| z adresáøe projektu. 
+
+Pak se musí upravit soubor \verb|handler.py| tak, aby naèetl správný modul a nastavil cestu k aplikaci:
+
+\begin{lstlisting}[frame=tlrb]
+import disp.xul
+import disp.xul.launcher
+
+import main
+
+def handler(req):
+  return disp.xul.launcher.launch (
+    main.Main,
+    req,
+    "/var/www/aplikace/xul/")
+
+\end{lstlisting}
+
+K spu¹tìní XUL front-endu je potøeba webový prohlí¾eè Firefox, alespoò ve verzi 1.5. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{screenshot2.png}
+\caption{Výsledná aplikace v XUL}
+\label{screenshot2}
+\end{figure}
+
+\newpage
+
+Poslední front-end je GTK front-end. Ten je na pou¾ití nejjednodu¹¹í, proto¾e jeho spou¹tìè je jediný soubor \verb|run.py| v adresáøi \verb|deploy/gtk/|.
+
+Staèí upravit tak, aby naèetl hlavní modul aplikace. Cestu k datovým souborùm nepotøebuje, pøedpokládá toti¾, ¾e v¹echny cesty k~datovým souborùm zaèínají z~aktuálního pracovního adresáøe.
+
+Soubor run.py:
+\begin{lstlisting}[frame=tlrb]
+#!/usr/bin/env python
+
+import disp.gtk
+from main import Main
+
+app = Main ()
+app.run ()
+
+\end{lstlisting}
+
+Aplikaci pak mù¾eme spustit pøímo
+
+\begin{verbatim}
+$ python run.py
+\end{verbatim}
+
+\begin{figure}[b]
+\centering
+\includegraphics[width=12cm]{screenshot3.png}
+\caption{Výsledná desktopová aplikace v GTK}
+\label{screenshot2}
+\end{figure}
+
+Jak bylo ukázáno, aplikace je pøenositelná beze zmìny zdrojového kódu a lze ji pou¾ít jako desktopovou i jako webovou aplikaci.
+
+% 1 Úvod  
+% 1.0 (Co dìlají informaèní systémy, proè je lep¹í nezávislý a co to znamená a ¾e to bude v Pythonu)
+% 1.1 Jazyk Python
+% 1.2 Objektovì orientovaný pøístup pøi tvorbì aplikací (principy OOP)
+% 1.2.1 OOP v dynamických jazycích (Pythonu) (o tom, jak je vìt¹ina návrhových vzorù zbyteèná, duck typing)
+% 1.3 Tvorba dynamických webových stránek
+% 1.3.1 Existující nástroje pro tvorbu webových aplikací
+% 1.3.1.1 CGI skirpty
+% 1.3.1.2 Rozlièné webové frameworky
+% 1.3.1.3 Tvorba webových aplikací s Apache a mod_python
+% 1.3.2 Rozdíly v tvorbì desktopových a webových aplikací (filozofická kapitolka)
+
+% 2 Návrh knihovny pro tvorbu nezávislých informaèních systémù
+
+% 2.1 Specifikace po¾adavkù (velice hrubì)
+% 2.2 Architektura (vrstvy)
+% 2.3 Návrh programového rozhraní (Jak bude zhruba vypadat API a proè zrovna tak)
+% 2.3.1 Reprezentace stavu aplikace (Objektový model, PObject, strom objektù, ...)
+% 2.3.2 Události (Princip událostí, jak se budou pou¾ívat)
+% 2.3.3 Komponenty u¾ivatelského rozhraní
+% 2.3.3.1 Ovládací prvky (co by tam mìlo být)
+% 2.3.3.2 Tabulky (a jak by se mìla umìt propojit s databází)
+% 2.3.3.3 Model rozvr¾ení komponent (princip vertikálních a horizontálních boxù, grid)
+% 2.3.4 Práce s databází
+
+% 3 Popis implementace
+
+% 3.1 Serializace a ulo¾ení stavu aplikace
+% 3.1.1 Mo¾nosti ulo¾ení stavu aplikace
+% 3.1.2 Optimalizace nemìnných objektù
+% 3.2 Webový front-end
+% 3.2.1 Vykreslení komponent
+% 3.2.2 Zpracování vstupù
+
+% 3.3 XUL front-end
+% 3.3.1 Nìco o XULu
+% 3.3.1 Komunikaèní protokol mezi klientem a serverem
+% 3.4 GTK front-end
+% 3.5 Integrace s knihovnou SQLObject
+
+% 4 Stav a mo¾né pokraèování projektu
+% 4.1 Nedostatky
+% 4.2 Srovnání s podobnými projekty
+% 4.3 Mo¾ná pokraèování projektu
+% 4.4 Závìr
+% 
+
+% 
+%
+% ----------------------------------------------------
+%
+
+
+% ----------------------------------------------
+% Pou¾itá literatura
+\bibliographystyle{czechiso}
+\begin{flushleft}
+\bibliography{main}
+\end{flushleft}
+
+\end{document}

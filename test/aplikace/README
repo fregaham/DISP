@@ -1,0 +1,43 @@
+
+Toto je priklad uvedeny v technicke zprave.
+
+Nejjednodusi je ho zkopirovat do /var/www/
+
+tedy tak, aby obsahoval adresare
+
+/var/www/aplikace/web/
+/var/www/aplikace/xul/
+
+Potrebuje bezici MySQL server a na nem ucet a databazi.
+
+Musi se upravit soubory dbschema.py, format connectionForURI intuitivni.
+Pred spustenim se musi vytvorit tabulky, na to staci spustit dbschema.py primo
+
+ $ python dbschema.py
+ 
+Pokud je connectionForURI nastaveny spravne, tak by to melo fungovat.
+
+Vse predpoklada nakonfigurovany Apache2 s modulem mod_python a povolenymi upravami pres .htaccess
+Nejsnadnejsi je neco na zpusob
+
+<Directory "/var/www/aplikace/">
+  AllowOverride All
+</Directory>
+	    
+v konfiguraci virtual hostu.
+
+Jinak dalsi vhodne nastaveni v Apache je pridat do DirectoryIndexu index.py a index.xul
+ 
+  DirectoryIndex index.xul index.py
+
+a pro spravne fungovani XUL front-endu jeste
+
+  AddType application/vnd.mozilla.xul+xml .xul
+
+
+Spusteni GTK front-endu jde primo (ovsem stale potrebuje spojeni k MySQL)
+
+  cd test/aplikace/gtk/
+  python run.py
+
+

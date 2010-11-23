@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui>
+	<StaticText text="Hello, world"/>
+	<TabBox>
+		<Tab label="Muj tab">
+			<HPane>
+				<Table id="table" rows="20">
+					<TableColumn column="name" label="Name" />
+					<TableColumn column="position" label="Position" />
+					
+					<handler event="lineSelected" handler="onPersonSelected"/>
+				</Table>
+				<VBox>
+					<Grid rows="2" cols="2">
+						<StaticText text="Name: "/>
+						<LineEdit id="edit_name" />
+						<StaticText text="Position: "/>
+						<LineEdit id="edit_position" />
+					</Grid>
+					<CheckBox id="check_bla" text="Bla Bla"/>
+					<StaticText id="static" />
+					<HButtonBox>
+						<Button text="Update">
+							<handler event="clicked" handler="onUpdate"/>
+						</Button>
+						
+						<Button text="New">
+							<handler event="clicked" handler="onNew"/>
+						</Button>
+						
+						<Button text="Delete">
+							<handler event="clicked" handler="onDelete"/>
+						</Button>
+						
+						<Button text="Export">
+							<handler event="clicked" handler="onExport"/>
+						</Button>
+						
+						<Button text="Import">
+							<handler event="clicked" handler="onImport"/>
+						</Button>
+					</HButtonBox>
+					<Table id="table_emails" rows="5">
+						<TableColumn column="email" label="E-mail"/>
+						<handler event="lineSelected" handler="onEmailSelected"/>
+					</Table>
+					<HButtonBox>
+						<Button text="Add Email">
+							<handler event="clicked" handler="onAddEmail"/>
+						</Button>
+						<Button text="Delete Email">
+							<handler event="clicked" handler="onDeleteEmail"/>
+						</Button>
+					</HButtonBox>
+				</VBox>
+			</HPane>
+		</Tab>
+		<Tab label="Druhy Tab">
+			<HButtonBox>
+				<Button id="button_hide" text="Hide">
+					<handler event="clicked" handler="onButtonHideClicked"/>
+				</Button>
+			</HButtonBox>
+			<StaticText text="Nothing for you to see here, move along."/>
+			<Button id="button_button" text="Button">
+				<handler event="clicked" handler="onButtonButton"/>
+			</Button>
+			<VBox id="form2_vbox"/>
+		</Tab>
+	</TabBox>
+</ui>

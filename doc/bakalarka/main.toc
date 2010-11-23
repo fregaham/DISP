@@ -1,0 +1,40 @@
+\select@language {czech}
+\contentsline {chapter}{Obsah}{6}{section*.1}
+\contentsline {chapter}{\numberline {1}\'Uvod}{7}{chapter.1}
+\contentsline {chapter}{\numberline {2}Sou\v casn\'y stav}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}Jazyk Python}{8}{section.2.1}
+\contentsline {section}{\numberline {2.2}Objektov\v e orientovan\'y p\v r\IeC {\'\i }stup p\v ri tvorb\v e aplikac\IeC {\'\i }}{8}{section.2.2}
+\contentsline {section}{\numberline {2.3}Tvorba dynamick\'ych webov\'ych str\'anek}{9}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Existuj\IeC {\'\i }c\IeC {\'\i } n\'astroje pro tvorbu webov\'ych aplikac\IeC {\'\i }}{10}{subsection.2.3.1}
+\contentsline {subsubsection}{CGI}{10}{section*.3}
+\contentsline {subsubsection}{Tvorba webov\'ych aplikac\IeC {\'\i } s Apache a mod\_python}{10}{section*.4}
+\contentsline {subsubsection}{Rozli\v cn\'e webov\'e frameworky}{10}{section*.5}
+\contentsline {subsection}{\numberline {2.3.2}Rozd\IeC {\'\i }ly v tvorb\v e desktopov\'ych a webov\'ych aplikac\IeC {\'\i }}{11}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}N\'avrh knihovny pro tvorbu nez\'avisl\'ych informa\v cn\IeC {\'\i }ch syst\'em\r u}{12}{chapter.3}
+\contentsline {section}{\numberline {3.1}Specifikace po\v zadavk\r u}{12}{section.3.1}
+\contentsline {section}{\numberline {3.2}Architektura}{12}{section.3.2}
+\contentsline {section}{\numberline {3.3}N\'avrh programov\'eho rozhran\IeC {\'\i } (API)}{14}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Reprezentace stavu aplikace}{14}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Ud\'alosti}{15}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Komponenty nez\'avisl\'eho u\v zivatelsk\'eho rozhran\IeC {\'\i }}{15}{subsection.3.3.3}
+\contentsline {subsubsection}{Ovl\'adac\IeC {\'\i } prvky}{16}{section*.6}
+\contentsline {subsubsection}{Tabulky}{16}{section*.7}
+\contentsline {subsubsection}{Model rozvr\v zen\IeC {\'\i } komponent}{17}{section*.8}
+\contentsline {subsubsection}{Vytv\'a\v ren\IeC {\'\i } u\v zivatelsk\'ych rozhran\IeC {\'\i } pomoc\IeC {\'\i } extern\IeC {\'\i }ho XML dokumentu}{18}{section*.9}
+\contentsline {subsection}{\numberline {3.3.4}Pr\'ace s datab\'az\IeC {\'\i }}{18}{subsection.3.3.4}
+\contentsline {chapter}{\numberline {4}Implementace}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Webov\'y front-end}{19}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Serializace a ulo\v zen\IeC {\'\i } stavu aplikace}{20}{subsection.4.1.1}
+\contentsline {subsubsection}{Mo\v znosti ulo\v zen\IeC {\'\i } stavu aplikace}{20}{section*.10}
+\contentsline {subsubsection}{Optimalizace nem\v enn\'ych objekt\r u}{20}{section*.11}
+\contentsline {subsection}{\numberline {4.1.2}Vykreslen\IeC {\'\i } komponent}{21}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Zpracov\'an\IeC {\'\i } vstup\r u}{21}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}XUL front-end}{22}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Co je to XUL}{22}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Komunika\v cn\IeC {\'\i } protokol mezi klientem a serverem}{22}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}GTK front-end}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}Integrace s knihovnou SQLObject}{25}{section.4.4}
+\contentsline {chapter}{\numberline {5}Z\'av\v er}{26}{chapter.5}
+\contentsline {chapter}{\numberline {A}Uk\'azkov\'a aplikace}{27}{appendix.A}
+\contentsline {section}{\numberline {A.1}K\'od aplikace}{27}{section.A.1}
+\contentsline {section}{\numberline {A.2}Nasazen\IeC {\'\i } aplikace}{31}{section.A.2}

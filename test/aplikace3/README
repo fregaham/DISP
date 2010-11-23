@@ -1,0 +1,11 @@
+
+Dalsi priklad obdobny s ukazkovou aplikaci. Ukazan pristup master-detail.
+
+Potrebuje databazi, ovsem na rozil od prikladu jedna je pripojeni pres SOConnection.
+
+v main.py je tedy potreba upravit retezec pro pripojeni k databazi (jmeno, heslo, databaze)
+a v dbconnection.py pak take... (pro vytvoreni tabulek)
+
+nazev tabulky koliduje s aplikaci1, takze bude lepsi to dat do jine databaze nez databazi z prikladu aplikace1.
+
+Pro GTK-front end staci spustit run.py

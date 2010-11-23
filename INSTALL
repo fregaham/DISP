@@ -1,0 +1,28 @@
+Instalace
+
+Knihovna byla vyvijena na systenu Debian GNU/Linux ve verzi Unstable z dubna 2006.
+
+Potrebne knihovny:
+
+  python2.3
+  python2.3-mysqldb
+  python2.3-simplejson
+  python2.3-sqlobject (+ jeji zavislost python2.3-formencode)
+  python2.3-gtk2
+  
+Verze SQLObject ktera je v soucasne dobe v Sidu sice funguje,
+ale delala mi obcas nejake neplechy. V tomto baliku jsou pribaleny 
+verze knihoven sqlobject, formencode a simplejson, ktere jsem pouzival. 
+Staci je nakopirovat do /usr/lib/python2.3/site-packages/
+
+Instalace:
+ 
+  Knihovna samotna je v adresari "disp". Ten adresar nejlepe nakopirovat
+  do adresare kde jsou ostatni pythonni knihovny, tedy do
+  
+  /usr/lib/python2.3/site-packages/
+  
+  Nebo nekam jinam, pokud se spravne nastavi promenna PYTHONPATH.
+  
+  
+  Instalace ukazkove aplikace viz test/aplikace/README

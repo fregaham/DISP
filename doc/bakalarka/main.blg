@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.4)
+The top-level auxiliary file: main.aux
+The style file: czechiso.bst
+Database file #1: main.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--to sort, need author or key in TurboGears
+Warning--to sort, need author or key in Django
+Warning--to sort, need author or key in json
+Warning--to sort, need author or key in xulrunner
+You've used 9 entries,
+            3151 wiz_defined-function locations,
+            695 strings with 6393 characters,
+and the built_in function-call counts, 3032 in all, are:
+= -- 202
+> -- 83
+< -- 2
++ -- 43
+- -- 22
+* -- 152
+:= -- 322
+add.period$ -- 18
+call.type$ -- 9
+change.case$ -- 38
+chr.to.int$ -- 6
+cite$ -- 13
+duplicate$ -- 296
+empty$ -- 324
+format.name$ -- 24
+if$ -- 665
+int.to.chr$ -- 0
+int.to.str$ -- 9
+missing$ -- 75
+newline$ -- 44
+num.names$ -- 10
+pop$ -- 210
+preamble$ -- 1
+purify$ -- 27
+quote$ -- 0
+skip$ -- 106
+stack$ -- 0
+substring$ -- 63
+swap$ -- 127
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 32
+warning$ -- 4
+while$ -- 12
+width$ -- 10
+write$ -- 83
+(There were 4 warnings)

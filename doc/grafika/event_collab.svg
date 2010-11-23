@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="744.09448"
+   height="1052.3622"
+   id="svg2">
+  <defs
+     id="defs1422">
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       style="overflow:visible"
+       id="TriangleOutM">
+      <path
+         d="M 5.77,0 L -2.88,5 L -2.88,-5 L 5.77,0 z "
+         transform="scale(0.4,0.4)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         id="path16662" />
+    </marker>
+  </defs>
+  <g
+     id="layer1">
+    <rect
+       width="113.99997"
+       height="48.749996"
+       x="103.47604"
+       y="282.77008"
+       style="fill:#eeeeee;fill-opacity:1;stroke:#000000;stroke-width:0.99999958;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect2268" />
+    <text
+       x="234.57628"
+       y="288.21738"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2242"
+       xml:space="preserve"><tspan
+         x="234.57628"
+         y="288.21738"
+         id="tspan2244">1 : addHandler (handler)</tspan></text>
+    <text
+       x="159.97998"
+       y="296.97519"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2274"
+       xml:space="preserve"><tspan
+         x="159.97998"
+         y="296.97519"
+         id="tspan2276">Modul</tspan><tspan
+         x="159.97998"
+         y="311.97519"
+         id="tspan1452">registrující</tspan><tspan
+         x="159.97998"
+         y="326.97519"
+         id="tspan2335">událost</tspan></text>
+    <rect
+       width="113.99997"
+       height="38.999996"
+       x="397.14288"
+       y="289.78796"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999958;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect2278" />
+    <text
+       x="450.92972"
+       y="312.11804"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2284"
+       xml:space="preserve"><tspan
+         x="450.92972"
+         y="312.11804"
+         id="tspan2286">clicked : Event</tspan></text>
+    <path
+       d="M 283.94615,298.67239 L 332.85709,298.65485"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       id="path3179" />
+    <path
+       d="M 217.29329,307.89554 L 396.86368,307.87976"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path2329" />
+    <path
+       d="M 406.35467,315.02262 L 498.62773,315.02262"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path2331" />
+    <rect
+       width="113.99997"
+       height="38.999996"
+       x="397.14288"
+       y="191.2981"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999958;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect2337" />
+    <text
+       x="450.92972"
+       y="213.62817"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2339"
+       xml:space="preserve"><tspan
+         x="450.92972"
+         y="213.62817"
+         id="tspan2341">: Button</tspan></text>
+    <path
+       d="M 424.03234,216.53275 L 478.42468,216.53275"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path2343" />
+    <path
+       d="M 452.04326,290.20209 L 452.04326,230.09801"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path2345" />
+    <rect
+       width="113.99997"
+       height="48.749996"
+       x="170.14612"
+       y="185.29036"
+       style="fill:#eeeeee;fill-opacity:1;stroke:#000000;stroke-width:0.99999958;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect2347" />
+    <text
+       x="223.6196"
+       y="212.12238"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2349"
+       xml:space="preserve"><tspan
+         x="223.6196"
+         y="212.12238"
+         id="tspan2355">GUI</tspan></text>
+    <path
+       d="M 284.35794,209.89496 L 396.48487,209.89496"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path2361" />
+    <path
+       d="M 314.7558,200.68759 L 363.66674,200.67005"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       id="path2363" />
+    <text
+       x="314.88339"
+       y="192.2529"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2365"
+       xml:space="preserve"><tspan
+         x="314.88339"
+         y="192.2529"
+         id="tspan2367">2 : klik!</tspan></text>
+    <path
+       d="M 465.26853,246.14445 L 465.18707,274.91626"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       id="path2369" />
+    <text
+       x="470.95197"
+       y="264.47882"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2371"
+       xml:space="preserve"><tspan
+         x="470.95197"
+         y="264.47882"
+         id="tspan2373">3 : call</tspan></text>
+    <rect
+       width="113.99997"
+       height="38.999996"
+       x="399.16321"
+       y="381.20679"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999958;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect2375" />
+    <text
+       x="454.97034"
+       y="403.53687"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2377"
+       xml:space="preserve"><tspan
+         x="454.97034"
+         y="403.53687"
+         id="tspan2379">handler : Handler</tspan></text>
+    <path
+       d="M 400.29375,406.44143 L 508.22417,406.44143"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path2381" />
+    <path
+       d="M 465.26853,340.43016 L 465.18707,369.20197"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-mid:none;marker-end:url(#TriangleOutM);stroke-opacity:1;display:inline"
+       id="path2383" />
+    <text
+       x="470.95197"
+       y="358.76453"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu Serif"
+       id="text2385"
+       xml:space="preserve"><tspan
+         x="470.95197"
+         y="358.76453"
+         id="tspan2387">4 : call</tspan></text>
+    <path
+       d="M 452.04326,381.09495 L 452.04326,329.11586"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path2389" />
+  </g>
+</svg>

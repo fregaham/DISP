@@ -1,0 +1,34 @@
+<ui>
+	<VBox>
+		<StaticText id="static" />
+		<TabBox>
+			<Tab label="Prvni tab">
+				<VBox>
+					<FrameBox label="Ramecek">
+						<VBox>
+							<HBox>
+								<StaticText text="text"/>
+								<LineEdit id="edit"/>
+							</HBox>
+							<RadioBox id="radio"/>
+							<CheckBox id="check" text="Check"/>
+						</VBox>
+					</FrameBox>
+					<Button text="Click!">
+						<handler event="clicked" handler="onClick"/>
+					</Button>
+				</VBox>
+			</Tab>
+			<Tab label="Druhy tab">
+				<VBox>
+					<Table id="table" rows="20">
+						<TableColumn column="a" label="A" />
+						<TableColumn column="b" label="B" />
+						<TableColumn column="c" label="C" />
+						<handler event="lineSelected" handler="onSelected"/>
+					</Table>
+				</VBox>
+			</Tab>
+		</TabBox>
+	</VBox>
+</ui>

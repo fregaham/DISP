@@ -1,0 +1,46 @@
+<ui>
+	<StaticText text="Hello, world"/>
+	<HPane>
+		<VBox>
+			<Grid rows="1" cols="3">
+				<StaticText text="Filter: "/>
+				<LineEdit id="edit_filter" size="40"/>
+				<Button text="Filter">
+					<handler event="clicked" handler="onFilter"/>
+				</Button>
+			</Grid>
+			<Table id="table" rows="20">
+				<TableColumn column="firstname" label="First Name" />
+				<TableColumn column="lastname" label="Last Name" />
+				<TableColumn column="email" label="E-mail" />
+				<handler event="lineSelected" handler="onPersonSelected"/>
+			</Table>
+		</VBox>
+		<VBox>
+			<FrameBox label="Details">
+				<Grid rows="4" cols="2">
+					<StaticText text="First name"/>
+					<LineEdit id="edit_firstname" />
+					<StaticText text="Last name"/>
+					<LineEdit id="edit_lastname" />
+					<StaticText text="E-mail"/>
+					<LineEdit id="edit_email" size="40" />
+				</Grid>
+			</FrameBox>
+			<HButtonBox>
+				<Button text="Update">
+					<handler event="clicked" handler="onUpdate"/>
+				</Button>
+				<Button text="New">
+					<handler event="clicked" handler="onNew"/>
+				</Button>
+				<Button text="Delete">
+					<handler event="clicked" handler="onDelete"/>
+				</Button>
+				<Button text="Export">
+					<handler event="clicked" handler="onExport"/>
+				</Button>
+			</HButtonBox>
+		</VBox>
+	</HPane>
+</ui>
